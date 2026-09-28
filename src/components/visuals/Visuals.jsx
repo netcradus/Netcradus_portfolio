@@ -87,41 +87,52 @@ export function NetworkLines({ className = '' }) {
  * Browser-window UI mockup used in hero / web-development visuals.
  * `variant` changes the internal layout so visuals don't repeat.
  */
-export function BrowserMockup({ variant = 'dashboard', className = '', accent = ROYAL }) {
+export function BrowserMockup({ variant = 'dashboard', className = '', accent = ROYAL, image, imgAlt = 'Dashboard preview', aspectRatio = 'aspect-[1440/711]' }) {
   return (
     <div
       className={`overflow-hidden rounded-2xl border border-white/10 bg-navy-800 shadow-[0_40px_90px_-40px_rgba(5,9,28,0.9)] ${className}`}
     >
       {/* title bar */}
-      <div className="flex items-center gap-2 border-b border-white/8 bg-navy-950/70 px-4 py-3">
+      <div className="flex items-center gap-2 border-b border-white/8 bg-navy-950/70 px-4 py-2.5 sm:py-3">
         <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
         <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
         <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
-        <div className="ml-3 h-5 flex-1 rounded-md bg-white/6" />
+        <div className="ml-3 h-4 sm:h-5 flex-1 rounded-md bg-white/6" />
       </div>
 
-      <div className="grid grid-cols-[64px_1fr] sm:grid-cols-[92px_1fr]">
-        {/* sidebar */}
-        <div className="flex flex-col gap-2.5 border-r border-white/6 bg-navy-950/40 p-3">
-          {[0, 1, 2, 3, 4].map((i) => (
-            <div
-              key={i}
-              className="h-2.5 rounded-full"
-              style={{
-                width: i === 1 ? '100%' : '72%',
-                background: i === 1 ? accent : 'rgba(255,255,255,0.14)',
-              }}
-            />
-          ))}
+      {image ? (
+        <div className={`relative w-full overflow-hidden bg-navy-900 ${aspectRatio}`}>
+          <img
+            src={image}
+            alt={imgAlt}
+            className="w-full h-full object-cover object-top block select-none"
+            loading="eager"
+          />
         </div>
+      ) : (
+        <div className="grid grid-cols-[64px_1fr] sm:grid-cols-[92px_1fr]">
+          {/* sidebar */}
+          <div className="flex flex-col gap-2.5 border-r border-white/6 bg-navy-950/40 p-3">
+            {[0, 1, 2, 3, 4].map((i) => (
+              <div
+                key={i}
+                className="h-2.5 rounded-full"
+                style={{
+                  width: i === 1 ? '100%' : '72%',
+                  background: i === 1 ? accent : 'rgba(255,255,255,0.14)',
+                }}
+              />
+            ))}
+          </div>
 
-        {/* content */}
-        <div className="space-y-3 p-3 sm:p-4">
-          {variant === 'dashboard' && <DashboardBody accent={accent} />}
-          {variant === 'pipeline' && <PipelineBody accent={accent} />}
-          {variant === 'analytics' && <AnalyticsBody accent={accent} />}
+          {/* content */}
+          <div className="space-y-3 p-3 sm:p-4">
+            {variant === 'dashboard' && <DashboardBody accent={accent} />}
+            {variant === 'pipeline' && <PipelineBody accent={accent} />}
+            {variant === 'analytics' && <AnalyticsBody accent={accent} />}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }
@@ -224,41 +235,55 @@ function AnalyticsBody({ accent }) {
 }
 
 /** Phone frame with a simple app UI. */
-export function PhoneMockup({ className = '', accent = VIOLET }) {
+export function PhoneMockup({ className = '', accent = VIOLET, image, imgAlt = 'Mobile app preview', aspectRatio = 'aspect-[373/667]' }) {
   return (
     <div
-      className={`relative w-[168px] rounded-[2rem] border border-white/12 bg-navy-950 p-2 shadow-[0_40px_80px_-40px_rgba(5,9,28,0.9)] sm:w-[196px] ${className}`}
+      className={`relative w-[170px] sm:w-[200px] md:w-[214px] rounded-[2.2rem] border border-white/15 bg-navy-950 p-2 sm:p-2.5 shadow-[0_40px_80px_-40px_rgba(5,9,28,0.95)] ring-1 ring-white/10 ${className}`}
     >
-      <div className="absolute left-1/2 top-2.5 h-1.5 w-14 -translate-x-1/2 rounded-full bg-white/20" />
-      <div className="mt-4 overflow-hidden rounded-[1.45rem] bg-navy-800">
-        <div className="border-b border-white/8 px-3 py-3">
-          <div className="h-1.5 w-12 rounded-full bg-white/30" />
-          <div className="mt-2 h-3 w-24 rounded bg-white/70" />
-        </div>
-        <div className="space-y-2 p-3">
-          <div className="rounded-lg p-2.5" style={{ background: `linear-gradient(120deg, ${accent}, ${ROYAL})` }}>
-            <div className="h-1.5 w-10 rounded-full bg-white/70" />
-            <div className="mt-1.5 h-3 w-16 rounded bg-white/90" />
-          </div>
-          {[0, 1, 2].map((i) => (
-            <div key={i} className="flex items-center gap-2 rounded-lg border border-white/8 bg-white/[0.04] p-2">
-              <div className="h-6 w-6 rounded-md" style={{ background: i === 1 ? CYAN : 'rgba(255,255,255,0.16)' }} />
-              <div className="flex-1">
-                <div className="h-1.5 w-3/4 rounded-full bg-white/45" />
-                <div className="mt-1 h-1.5 w-1/2 rounded-full bg-white/18" />
-              </div>
-            </div>
-          ))}
-        </div>
-        <div className="flex justify-around border-t border-white/8 px-3 py-2.5">
-          {[0, 1, 2, 3].map((i) => (
-            <span
-              key={i}
-              className="h-1.5 w-1.5 rounded-full"
-              style={{ background: i === 0 ? accent : 'rgba(255,255,255,0.25)' }}
+      {/* speaker / dynamic island notch */}
+      <div className="absolute left-1/2 top-2.5 sm:top-3 h-1.5 w-12 sm:w-14 -translate-x-1/2 rounded-full bg-white/25 z-20" />
+      <div className="mt-3.5 sm:mt-4 overflow-hidden rounded-[1.4rem] bg-navy-800">
+        {image ? (
+          <div className={`relative w-full ${aspectRatio} overflow-hidden bg-navy-900`}>
+            <img
+              src={image}
+              alt={imgAlt}
+              className="w-full h-full object-cover object-top block select-none"
+              loading="eager"
             />
-          ))}
-        </div>
+          </div>
+        ) : (
+          <>
+            <div className="border-b border-white/8 px-3 py-3">
+              <div className="h-1.5 w-12 rounded-full bg-white/30" />
+              <div className="mt-2 h-3 w-24 rounded bg-white/70" />
+            </div>
+            <div className="space-y-2 p-3">
+              <div className="rounded-lg p-2.5" style={{ background: `linear-gradient(120deg, ${accent}, ${ROYAL})` }}>
+                <div className="h-1.5 w-10 rounded-full bg-white/70" />
+                <div className="mt-1.5 h-3 w-16 rounded bg-white/90" />
+              </div>
+              {[0, 1, 2].map((i) => (
+                <div key={i} className="flex items-center gap-2 rounded-lg border border-white/8 bg-white/[0.04] p-2">
+                  <div className="h-6 w-6 rounded-md" style={{ background: i === 1 ? CYAN : 'rgba(255,255,255,0.16)' }} />
+                  <div className="flex-1">
+                    <div className="h-1.5 w-3/4 rounded-full bg-white/45" />
+                    <div className="mt-1 h-1.5 w-1/2 rounded-full bg-white/18" />
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="flex justify-around border-t border-white/8 px-3 py-2.5">
+              {[0, 1, 2, 3].map((i) => (
+                <span
+                  key={i}
+                  className="h-1.5 w-1.5 rounded-full"
+                  style={{ background: i === 0 ? accent : 'rgba(255,255,255,0.25)' }}
+                />
+              ))}
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

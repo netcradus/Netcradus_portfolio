@@ -9,6 +9,9 @@ import {
   PhoneMockup,
   Blob,
 } from '../components/visuals/Visuals';
+import crmImg from '../assets/crm1 (2).png';
+import web1Img from '../assets/web1.png';
+import app1Img from '../assets/app1.png';
 
 const MEDIA_BG = {
   erp: 'linear-gradient(135deg,#0b0c10 0%,#e04300 55%,#ff7b00 100%)',
@@ -88,10 +91,30 @@ function ProjectCard({ project }) {
             <div className="w-full max-w-[30rem] transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.045]">
               {project.visual === 'mobile' ? (
                  <div className="flex justify-center">
-                   <PhoneMockup className="animate-float" />
+                   <PhoneMockup
+                     className="animate-float"
+                     image={project.visual === 'mobile' || project.id === 'mobile-business-application' ? app1Img : project.image}
+                     aspectRatio="aspect-[373/667]"
+                     imgAlt={project.title}
+                   />
                  </div>
               ) : (
                 <BrowserMockup
+                  image={
+                    project.visual === 'web' || project.id === 'digital-business-platform'
+                      ? web1Img
+                      : project.visual === 'crm' || project.id === 'sales-crm-platform'
+                        ? crmImg
+                        : project.image
+                  }
+                  aspectRatio={
+                    project.visual === 'web' || project.id === 'digital-business-platform'
+                      ? 'aspect-[1440/711]'
+                      : project.visual === 'crm' || project.id === 'sales-crm-platform'
+                        ? 'aspect-[1317/767]'
+                        : undefined
+                  }
+                  imgAlt={project.title}
                   variant={
                     project.visual === 'erp'
                       ? 'analytics'

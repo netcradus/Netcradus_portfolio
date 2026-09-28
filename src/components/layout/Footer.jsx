@@ -1,8 +1,10 @@
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, Instagram, Linkedin, Facebook, Twitter } from 'lucide-react';
 import Logo from '../ui/Logo';
 import { siteConfig } from '../../data/config';
 import { services } from '../../data/site';
 import Reveal from '../ui/Reveal';
+import logo1Img from '../../assets/logo1.png';
+import lastBgImg from '../../assets/last.png';
 
 const COMPANY_LINKS = [
   { label: 'About', href: '#about' },
@@ -11,53 +13,53 @@ const COMPANY_LINKS = [
   { label: 'Contact', href: '#contact' },
 ];
 
+const SOCIAL_LINKS = [
+  { id: 'instagram', label: 'Instagram', icon: Instagram, href: 'https://instagram.com/cyberhaxs' },
+  { id: 'linkedin', label: 'LinkedIn', icon: Linkedin, href: 'https://linkedin.com/company/cyberhaxs' },
+  { id: 'facebook', label: 'Facebook', icon: Facebook, href: 'https://facebook.com/cyberhaxs' },
+  { id: 'twitter', label: 'Twitter', icon: Twitter, href: 'https://twitter.com/cyberhaxs' },
+];
+
 export default function Footer() {
   const year = new Date().getFullYear();
-  const socials = siteConfig.socials.filter((s) => s.url);
 
   return (
-    <footer className="relative overflow-hidden bg-navy-900 text-white">
-      <div className="bg-grid-dark pointer-events-none absolute inset-0 opacity-30" />
-      <div
-        className="pointer-events-none absolute -left-32 -top-32 h-[28rem] w-[28rem] rounded-full opacity-40 blur-[120px]"
-        style={{ background: 'radial-gradient(circle, rgba(255,85,0,0.65), transparent 62%)' }}
-      />
-      <div
-        className="pointer-events-none absolute -bottom-40 right-0 h-[30rem] w-[30rem] rounded-full opacity-35 blur-[130px]"
-        style={{ background: 'radial-gradient(circle, rgba(255,123,0,0.6), transparent 62%)' }}
-      />
+    <footer className="relative overflow-hidden bg-white text-black">
+      {/* ---------------- Background Image (Clean without black shadows) ---------------- */}
+      <div className="pointer-events-none absolute inset-0 z-0">
+        <img
+          src={lastBgImg}
+          alt=""
+          className="h-full w-full object-cover object-center"
+        />
+      </div>
 
-      <div className="container-page relative pb-10 pt-20 sm:pt-28">
-        {/* ---------------- Wordmark ---------------- */}
+      <div className="container-page relative z-10 pb-10 pt-16 sm:pt-24">
+        {/* ---------------- Logo ---------------- */}
         <Reveal>
           <a
             href="#home"
-            className="group block"
+            className="group inline-block"
             aria-label="CyberHaxs — back to top"
             onClick={(e) => {
               e.preventDefault();
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
           >
-            <span
-              className="block font-display text-[clamp(4rem,17vw,15rem)] font-bold leading-[0.82] tracking-[-0.05em] text-white"
-              aria-hidden="true"
-            >
-              <span className="block transition-colors duration-500 group-hover:text-white/85">
-                CYBER
-              </span>
-              <span className="text-gradient-dark block">HAXS</span>
-            </span>
-            <span className="sr-only">CyberHaxs</span>
+            <img
+              src={logo1Img}
+              alt="CyberHaxs"
+              className="h-12 sm:h-16 md:h-20 w-auto max-w-full object-contain transition-transform duration-300 group-hover:scale-105"
+            />
           </a>
         </Reveal>
 
-        <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/60">
+        <p className="mt-6 max-w-xl text-lg font-medium leading-relaxed text-black/80">
           {siteConfig.tagline}
         </p>
 
         {/* ---------------- Link grid ---------------- */}
-        <div className="mt-16 grid grid-cols-2 gap-y-12 border-t border-white/10 pt-12 sm:mt-20 md:grid-cols-4">
+        <div className="mt-16 grid grid-cols-2 gap-y-12 border-t border-black/15 pt-12 sm:mt-20 md:grid-cols-4">
           <FooterCol title="Services">
             {services.map((s) => (
               <FooterLink key={s.id} href="#services">
@@ -75,27 +77,35 @@ export default function Footer() {
           </FooterCol>
 
           <FooterCol title="Social">
-            {socials.length > 0 ? (
-              socials.map((s) => (
-                <FooterLink key={s.id} href={s.url} external>
-                  {s.label}
-                </FooterLink>
-              ))
-            ) : (
-              <li>
-                <span className="text-sm text-white/40">
-                  Placeholder — add real profile URLs in{' '}
-                  <code className="rounded bg-white/10 px-1.5 py-0.5 text-[0.8em]">src/data/config.js</code>
-                </span>
-              </li>
-            )}
+            {SOCIAL_LINKS.map((s) => {
+              const Icon = s.icon;
+              return (
+                <li key={s.id}>
+                  <a
+                    href={s.href}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    className="group inline-flex items-center gap-3 text-sm font-medium text-black/85 transition-all duration-200 hover:text-[#ff5500]"
+                  >
+                    <span className="flex h-7 w-7 items-center justify-center rounded-lg border border-black/15 bg-black/[0.04] text-black/75 transition-all duration-200 group-hover:border-[#ff5500]/50 group-hover:bg-[#ff5500]/15 group-hover:text-[#ff5500] group-hover:shadow-[0_0_12px_rgba(255,85,0,0.35)]">
+                      <Icon className="h-3.5 w-3.5" />
+                    </span>
+                    <span>{s.label}</span>
+                    <ArrowUpRight
+                      className="h-3.5 w-3.5 text-[#ff5500] opacity-0 transition-all duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100"
+                      aria-hidden="true"
+                    />
+                  </a>
+                </li>
+              );
+            })}
           </FooterCol>
 
           <FooterCol title="Get in touch">
             <li>
               <a
                 href="#contact"
-                className="group inline-flex items-center gap-2 rounded-full bg-brand-gradient px-5 py-3 text-sm font-semibold text-white transition-shadow duration-300 hover:shadow-[0_16px_36px_-16px_rgba(255,85,0,0.85)]"
+                className="group inline-flex items-center gap-2 rounded-full bg-brand-gradient px-5 py-3 text-sm font-semibold text-white shadow-[0_8px_24px_-8px_rgba(255,85,0,0.7)] transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_16px_36px_-12px_rgba(255,85,0,0.9)]"
               >
                 Start a Project
                 <ArrowUpRight
@@ -105,7 +115,7 @@ export default function Footer() {
               </a>
             </li>
             <li className="pt-1">
-              <span className="text-xs uppercase tracking-[0.18em] text-white/35">
+              <span className="text-xs font-medium uppercase tracking-[0.18em] text-black/60">
                 Placeholder contact details
               </span>
             </li>
@@ -113,27 +123,46 @@ export default function Footer() {
         </div>
 
         {/* ---------------- Bottom bar ---------------- */}
-        <div className="mt-14 flex flex-col gap-5 border-t border-white/10 pt-7 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-sm text-white/45">
+        <div className="mt-14 flex flex-col gap-6 border-t border-black/15 pt-7 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-sm font-medium text-black/75">
             © {year} CyberHaxs. All rights reserved.
           </p>
 
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-white/45">
+          {/* Social icons strip */}
+          <div className="flex items-center gap-3">
+            {SOCIAL_LINKS.map((s) => {
+              const Icon = s.icon;
+              return (
+                <a
+                  key={s.id}
+                  href={s.href}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  aria-label={s.label}
+                  className="group relative flex h-10 w-10 items-center justify-center rounded-full border border-black/15 bg-black/[0.04] text-black/75 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:scale-110 hover:border-[#ff5500] hover:bg-gradient-to-tr hover:from-[#ff5500] hover:to-[#ff7b00] hover:text-white hover:shadow-[0_0_20px_rgba(255,85,0,0.5)]"
+                >
+                  <Icon className="h-4.5 w-4.5 transition-transform duration-300 group-hover:scale-110" />
+                </a>
+              );
+            })}
+          </div>
+
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm font-medium text-black/70">
             <a
               href={siteConfig.legal.privacy ?? '#'}
-              className="transition-colors hover:text-white"
+              className="transition-colors hover:text-black"
               aria-disabled={siteConfig.legal.privacy ? undefined : true}
             >
               Privacy Policy{siteConfig.legal.privacy ? '' : ' *'}
             </a>
             <a
               href={siteConfig.legal.terms ?? '#'}
-              className="transition-colors hover:text-white"
+              className="transition-colors hover:text-black"
               aria-disabled={siteConfig.legal.terms ? undefined : true}
             >
               Terms{siteConfig.legal.terms ? '' : ' *'}
             </a>
-            <span className="text-white/25">* placeholder links</span>
+            <span className="text-black/45">* placeholder links</span>
           </div>
         </div>
       </div>
@@ -144,7 +173,7 @@ export default function Footer() {
 function FooterCol({ title, children }) {
   return (
     <div className="flex flex-col gap-4">
-      <h3 className="text-[0.72rem] font-semibold uppercase tracking-[0.24em] text-white/40">
+      <h3 className="text-[0.72rem] font-bold uppercase tracking-[0.24em] text-black/70">
         {title}
       </h3>
       <ul className="flex flex-col gap-2.5">{children}</ul>
@@ -153,18 +182,18 @@ function FooterCol({ title, children }) {
 }
 
 function FooterLink({ href, children, external = false }) {
-  if (!href) return <li className="text-sm text-white/40">{children}</li>;
+  if (!href) return <li className="text-sm font-medium text-black/60">{children}</li>;
   return (
     <li>
       <a
         href={href}
         {...(external ? { target: '_blank', rel: 'noreferrer noopener' } : {})}
-        className="group inline-flex items-center gap-1.5 text-sm text-white/65 transition-colors duration-200 hover:text-white"
+        className="group inline-flex items-center gap-1.5 text-sm font-medium text-black/80 transition-colors duration-200 hover:text-[#ff5500]"
       >
         {children}
         {external && (
           <ArrowUpRight
-            className="h-3.5 w-3.5 opacity-0 transition-all duration-200 group-hover:opacity-100"
+            className="h-3.5 w-3.5 text-[#ff5500] opacity-0 transition-all duration-200 group-hover:opacity-100"
             aria-hidden="true"
           />
         )}

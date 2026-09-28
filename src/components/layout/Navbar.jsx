@@ -73,8 +73,8 @@ export default function Navbar() {
 
   const closeMenu = useCallback(() => setOpen(false), []);
 
-  /** True while the bar floats over the dark hero (i.e. not scrolled). */
-  const overDark = !scrolled && !open;
+  /** False since hero background is now light/white */
+  const overDark = false;
 
   const goTo = (e, href) => {
     closeMenu();

@@ -3,6 +3,7 @@ import { Check } from 'lucide-react';
 import SectionHeading from '../components/ui/SectionHeading';
 import Reveal, { MediaReveal, RevealItem } from '../components/ui/Reveal';
 import Button, { TextLink } from '../components/ui/Button';
+import aboutVideo from '../assets/aboutv.mp4';
 import { about } from '../data/site';
 import { EASE } from '../lib/animation';
 
@@ -67,97 +68,16 @@ export default function About() {
           {/* ---------------- visual ---------------- */}
           <div className="relative min-w-0 lg:sticky lg:top-28">
             <MediaReveal className="relative">
-              <div className="relative aspect-[4/4.4] w-full overflow-hidden rounded-[2.5rem] bg-navy-900 sm:aspect-[4/3.6] lg:aspect-[4/4.4]">
-                <div className="bg-grid-dark absolute inset-0 opacity-50" />
-                <div
-                  className="absolute -left-24 -top-24 h-72 w-72 rounded-full opacity-60 blur-[90px]"
-                  style={{ background: 'radial-gradient(circle, rgba(255,85,0,0.7), transparent 62%)' }}
-                  aria-hidden="true"
+              <div className="relative aspect-video w-full overflow-hidden rounded-[2rem] bg-navy-950 border border-white/10 shadow-2xl">
+                <video
+                  src={aboutVideo}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  preload="auto"
+                  className="h-full w-full object-cover block"
                 />
-                <div
-                  className="absolute -bottom-28 -right-16 h-80 w-80 rounded-full opacity-55 blur-[100px]"
-                  style={{ background: 'radial-gradient(circle, rgba(255,123,0,0.6), transparent 62%)' }}
-                  aria-hidden="true"
-                />
-
-                {/* layered UI composition */}
-                <div className="absolute inset-0 flex items-center justify-center p-6 sm:p-10">
-                  <div className="w-full space-y-4">
-                    {/* window 1 */}
-                    <motion.div
-                      className="w-[86%] overflow-hidden rounded-2xl border border-white/10 bg-navy-800/90 shadow-2xl backdrop-blur"
-                      initial={reduced ? {} : { y: 26, opacity: 0 }}
-                      whileInView={{ y: 0, opacity: 1 }}
-                      viewport={{ once: true, amount: 0.4 }}
-                      transition={{ duration: 0.8, ease: EASE, delay: 0.15 }}
-                    >
-                      <div className="flex items-center gap-2 border-b border-white/8 px-3.5 py-2.5">
-                        <span className="h-2 w-2 rounded-full bg-white/25" />
-                        <span className="h-2 w-2 rounded-full bg-white/18" />
-                        <span className="h-2 w-2 rounded-full bg-white/12" />
-                        <span className="ml-2 text-[0.6rem] uppercase tracking-[0.2em] text-white/35">
-                          architecture
-                        </span>
-                      </div>
-                      <div className="grid grid-cols-3 gap-2 p-3">
-                        {['Clients', 'API', 'Services', 'Workers', 'Cache', 'Data'].map((t, i) => (
-                          <div
-                            key={t}
-                            className="rounded-lg border border-white/8 px-2 py-2.5 text-center text-[0.62rem] font-semibold tracking-wide"
-                            style={{
-                              background: i === 4 ? 'linear-gradient(120deg,#ff5500,#ffaa2b)' : 'rgba(255,255,255,0.05)',
-                              color: i === 4 ? '#fff' : 'rgba(255,255,255,0.7)',
-                            }}
-                          >
-                            {t}
-                          </div>
-                        ))}
-                      </div>
-                    </motion.div>
-
-                    {/* window 2 (offset) */}
-                    <motion.div
-                      className="ml-auto w-[74%] overflow-hidden rounded-2xl border border-white/10 bg-white/[0.06] p-3.5 backdrop-blur-xl"
-                      initial={reduced ? {} : { y: 30, opacity: 0 }}
-                      whileInView={{ y: 0, opacity: 1 }}
-                      viewport={{ once: true, amount: 0.4 }}
-                      transition={{ duration: 0.8, ease: EASE, delay: 0.32 }}
-                    >
-                      <div className="flex items-end gap-1.5">
-                        {[46, 68, 52, 84, 61, 92, 74].map((h, i) => (
-                          <div
-                            key={i}
-                            className="flex-1 rounded-t"
-                            style={{
-                              height: `${h * 0.5}px`,
-                              background:
-                                i % 2 ? 'linear-gradient(180deg,#ffaa2b,#ff5500)' : 'rgba(255,255,255,0.22)',
-                            }}
-                          />
-                        ))}
-                      </div>
-                      <p className="mt-2.5 text-[0.6rem] uppercase tracking-[0.2em] text-white/40">
-                        performance
-                      </p>
-                    </motion.div>
-
-                    {/* badges */}
-                    <div className="flex flex-wrap gap-2">
-                      {['Scalable', 'Secure', 'Cloud-ready'].map((t, i) => (
-                        <motion.span
-                          key={t}
-                          className="rounded-full border border-white/12 bg-white/[0.07] px-3 py-1.5 text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-white/75 backdrop-blur"
-                          initial={reduced ? {} : { opacity: 0, scale: 0.9 }}
-                          whileInView={{ opacity: 1, scale: 1 }}
-                          viewport={{ once: true }}
-                          transition={{ duration: 0.5, ease: EASE, delay: 0.5 + i * 0.1 }}
-                        >
-                          {t}
-                        </motion.span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
               </div>
             </MediaReveal>
 
