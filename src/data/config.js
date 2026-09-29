@@ -29,10 +29,9 @@ export const siteConfig = {
   contactEndpoint: null,
 
   /**
-   * PLACEHOLDER — set your real business email to offer a mailto fallback
-   * when the endpoint is unavailable. Leave null until you have one.
+   * Business email for inquiries and fallbacks.
    */
-  contactEmail: null,
+  contactEmail: 'info@cyberhaxs.com',
 
   /** PLACEHOLDER — replace with real profiles. null hides the link. */
   socials: [

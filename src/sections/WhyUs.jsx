@@ -11,6 +11,7 @@ import {
 import SectionHeading from '../components/ui/SectionHeading';
 import Reveal, { RevealItem } from '../components/ui/Reveal';
 import { whyUs } from '../data/site';
+import bg6Img from '../assets/bg6.png';
 
 const ICONS = {
   custom: Code2,
@@ -29,8 +30,19 @@ const ICONS = {
  */
 export default function WhyUs() {
   return (
-    <section id="why" className="relative overflow-hidden bg-white py-24 sm:py-32 lg:py-40" aria-labelledby="why-title">
-      <div className="container-page">
+    <section id="why" className="relative overflow-hidden bg-slate-900 py-24 sm:py-32 lg:py-40" aria-labelledby="why-title">
+      {/* Background Image: bg6.png with high visibility */}
+      <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
+        <img
+          src={bg6Img}
+          alt="Why Choose CyberHaxs Background"
+          className="h-full w-full object-cover object-center select-none"
+        />
+        <div className="absolute inset-0 bg-white/45" />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-transparent to-white/70" />
+      </div>
+
+      <div className="container-page relative z-10">
         <SectionHeading
           id="why-title"
           eyebrow="Why CyberHaxs"
@@ -42,12 +54,12 @@ export default function WhyUs() {
           className="max-w-4xl"
         />
 
-        <Reveal stagger className="mt-14 grid border-l border-t border-ink/10 sm:mt-20 sm:grid-cols-2 lg:grid-cols-4" amount={0.05}>
+        <Reveal stagger className="mt-14 grid border-l border-t border-ink/15 sm:mt-20 sm:grid-cols-2 lg:grid-cols-4 rounded-2xl overflow-hidden shadow-2xl backdrop-blur-sm" amount={0.05}>
           {whyUs.map((item, i) => {
             const Icon = ICONS[item.id] ?? Sparkles;
             return (
               <RevealItem key={item.id} className="h-full">
-                <div className="group relative h-full overflow-hidden border-b border-r border-ink/10 p-6 transition-colors duration-500 hover:bg-surface sm:p-7">
+                <div className="group relative h-full overflow-hidden border-b border-r border-ink/15 bg-white/88 p-6 transition-all duration-500 hover:bg-white sm:p-7 backdrop-blur-md">
                   {/* gradient sweep */}
                   <span
                     aria-hidden="true"

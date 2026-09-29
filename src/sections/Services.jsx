@@ -6,6 +6,10 @@ import Reveal from '../components/ui/Reveal';
 import { services } from '../data/site';
 import { EASE } from '../lib/animation';
 import { BrowserMockup, PhoneMockup } from '../components/visuals/Visuals';
+import crm2Img from '../assets/crm2 (2).png';
+import web1Img from '../assets/web1.png';
+import app1Img from '../assets/app1.png';
+import bg3Img from '../assets/bg3.png';
 
 const GRADIENTS = {
   royal: 'linear-gradient(120deg,#ff5500,#ff7b00)',
@@ -35,17 +39,34 @@ export default function Services() {
     my.set(e.clientY - rect.top);
   };
 
-  const selectService = (id) => {
-    // Pre-select the service in the contact form (same-tab custom event).
-    window.dispatchEvent(new CustomEvent('cyberhaxs:select-service', { detail: id }));
+  const openServiceModal = (e, id) => {
+    e.preventDefault();
+    if (id === 'web-development') {
+      window.dispatchEvent(new CustomEvent('cyberhaxs:open-web-showcase', { detail: 'web-development' }));
+    } else if (id === 'app-development') {
+      window.dispatchEvent(new CustomEvent('cyberhaxs:open-app-showcase', { detail: 'app-development' }));
+    } else if (id === 'crm-solutions') {
+      window.dispatchEvent(new CustomEvent('cyberhaxs:open-crm-showcase', { detail: 'crm-solutions' }));
+    }
   };
 
   return (
     <section
       id="services"
-      className="relative overflow-hidden bg-navy-900 py-24 text-white sm:py-32 lg:py-40"
+      className="relative overflow-hidden bg-navy-950 py-24 text-white sm:py-32 lg:py-40"
       aria-labelledby="services-title"
     >
+      {/* Background Image: bg3.png */}
+      <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
+        <img
+          src={bg3Img}
+          alt="Capabilities Background"
+          className="h-full w-full object-cover object-center opacity-55 select-none"
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-navy-950/60" />
+        <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-transparent to-navy-950/80" />
+      </div>
       <div className="bg-grid-dark absolute inset-0 opacity-40" aria-hidden="true" />
       <div
         className="pointer-events-none absolute -right-40 top-10 h-[30rem] w-[30rem] rounded-full opacity-40 blur-[130px]"
@@ -95,10 +116,10 @@ export default function Services() {
                 />
 
                 <a
-                  href="#contact"
-                  onClick={() => selectService(service.id)}
-                  className="relative flex flex-col gap-5 py-8 outline-none transition-[padding] duration-500 sm:py-10 lg:flex-row lg:items-center lg:gap-10 lg:group-hover:pl-4"
-                  aria-label={`${service.title} — start a project`}
+                  href={`#${service.id}`}
+                  onClick={(e) => openServiceModal(e, service.id)}
+                  className="relative flex flex-col gap-5 py-8 outline-none transition-[padding] duration-500 sm:py-10 lg:flex-row lg:items-center lg:gap-10 lg:group-hover:pl-4 cursor-pointer"
+                  aria-label={`${service.title} — view project showcase & details`}
                 >
                   {/* index */}
                   <span className="font-mono text-xs tracking-[0.2em] text-cyan-300/80 lg:w-16 lg:flex-none">
@@ -157,23 +178,27 @@ export default function Services() {
                 transition={{ duration: 0.35, ease: EASE }}
                 aria-hidden="true"
               >
-                <div className="w-[19rem] rotate-[-4deg]">
+                <div className="w-[22rem] sm:w-[26rem] rotate-[-3deg] drop-shadow-2xl">
                   {active === 'app-development' ? (
                     <div className="flex justify-center">
-                      <PhoneMockup className="!w-[130px] scale-95" accent="#ffaa2b" />
+                      <PhoneMockup className="!w-[140px] scale-95" accent="#ffaa2b" image={app1Img} imgAlt="Mobile App Development" />
                     </div>
+                  ) : active === 'crm-solutions' ? (
+                    <BrowserMockup
+                      image={crm2Img}
+                      imgAlt="CRM Solutions platform"
+                      accent="#ff7b00"
+                    />
+                  ) : active === 'web-development' ? (
+                    <BrowserMockup
+                      image={web1Img}
+                      imgAlt="Web Development platform"
+                      accent="#ff5500"
+                    />
                   ) : (
                     <BrowserMockup
-                      variant={
-                        active === 'erp-solutions'
-                          ? 'analytics'
-                          : active === 'crm-solutions'
-                            ? 'pipeline'
-                            : 'dashboard'
-                      }
-                      accent={
-                        active === 'erp-solutions' ? '#ffaa2b' : active === 'crm-solutions' ? '#ff7b00' : '#ff5500'
-                      }
+                      variant="analytics"
+                      accent="#ffaa2b"
                     />
                   )}
                 </div>

@@ -2,10 +2,15 @@ import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import { PreloaderGate } from './components/layout/Preloader';
 import Home from './pages/Home';
+import DPDPPrivacyModal from './components/legal/DPDPPrivacyModal';
+import ConsentBanner from './components/legal/ConsentBanner';
+import WebDevShowcaseModal from './components/showcase/WebDevShowcaseModal';
+import AppDevShowcaseModal from './components/showcase/AppDevShowcaseModal';
+import CrmShowcaseModal from './components/showcase/CrmShowcaseModal';
 
 /**
  * CyberHaxs — root application shell.
- * Kept intentionally thin: preloader → nav → page → footer.
+ * Kept intentionally thin: preloader → nav → page → footer → modals/banners.
  */
 export default function App() {
   return (
@@ -22,6 +27,13 @@ export default function App() {
       <Home />
 
       <Footer />
+
+      <WebDevShowcaseModal />
+      <AppDevShowcaseModal />
+      <CrmShowcaseModal />
+      <DPDPPrivacyModal />
+      <ConsentBanner />
     </PreloaderGate>
   );
 }
+

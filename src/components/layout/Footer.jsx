@@ -62,7 +62,22 @@ export default function Footer() {
         <div className="mt-16 grid grid-cols-2 gap-y-12 border-t border-black/15 pt-12 sm:mt-20 md:grid-cols-4">
           <FooterCol title="Services">
             {services.map((s) => (
-              <FooterLink key={s.id} href="#services">
+              <FooterLink
+                key={s.id}
+                href={`#${s.id}`}
+                onClick={(e) => {
+                  if (s.id === 'web-development') {
+                    e.preventDefault();
+                    window.dispatchEvent(new CustomEvent('cyberhaxs:open-web-showcase', { detail: 'web-development' }));
+                  } else if (s.id === 'app-development') {
+                    e.preventDefault();
+                    window.dispatchEvent(new CustomEvent('cyberhaxs:open-app-showcase', { detail: 'app-development' }));
+                  } else if (s.id === 'crm-solutions') {
+                    e.preventDefault();
+                    window.dispatchEvent(new CustomEvent('cyberhaxs:open-crm-showcase', { detail: 'crm-solutions' }));
+                  }
+                }}
+              >
                 {s.shortLabel}
               </FooterLink>
             ))}
@@ -147,22 +162,35 @@ export default function Footer() {
             })}
           </div>
 
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm font-medium text-black/70">
-            <a
-              href={siteConfig.legal.privacy ?? '#'}
-              className="transition-colors hover:text-black"
-              aria-disabled={siteConfig.legal.privacy ? undefined : true}
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm font-medium text-black/80">
+            <button
+              type="button"
+              onClick={() => window.dispatchEvent(new CustomEvent('cyberhaxs:open-dpdp', { detail: { tab: 'guidelines' } }))}
+              className="transition-colors hover:text-[#ff5500] cursor-pointer"
             >
-              Privacy Policy{siteConfig.legal.privacy ? '' : ' *'}
-            </a>
-            <a
-              href={siteConfig.legal.terms ?? '#'}
-              className="transition-colors hover:text-black"
-              aria-disabled={siteConfig.legal.terms ? undefined : true}
+              Privacy Policy & DPDP Notice
+            </button>
+            <button
+              type="button"
+              onClick={() => window.dispatchEvent(new CustomEvent('cyberhaxs:open-dpdp', { detail: { tab: 'rights' } }))}
+              className="transition-colors hover:text-[#ff5500] cursor-pointer"
             >
-              Terms{siteConfig.legal.terms ? '' : ' *'}
-            </a>
-            <span className="text-black/45">* placeholder links</span>
+              Data Subject Rights
+            </button>
+            <button
+              type="button"
+              onClick={() => window.dispatchEvent(new CustomEvent('cyberhaxs:open-dpdp', { detail: { tab: 'contact' } }))}
+              className="transition-colors hover:text-[#ff5500] cursor-pointer"
+            >
+              Grievance Redressal
+            </button>
+            <button
+              type="button"
+              onClick={() => window.dispatchEvent(new CustomEvent('cyberhaxs:open-dpdp', { detail: { tab: 'cookies' } }))}
+              className="transition-colors hover:text-[#ff5500] cursor-pointer"
+            >
+              Consent Preferences
+            </button>
           </div>
         </div>
       </div>
@@ -181,14 +209,15 @@ function FooterCol({ title, children }) {
   );
 }
 
-function FooterLink({ href, children, external = false }) {
+function FooterLink({ href, children, external = false, onClick }) {
   if (!href) return <li className="text-sm font-medium text-black/60">{children}</li>;
   return (
     <li>
       <a
         href={href}
+        onClick={onClick}
         {...(external ? { target: '_blank', rel: 'noreferrer noopener' } : {})}
-        className="group inline-flex items-center gap-1.5 text-sm font-medium text-black/80 transition-colors duration-200 hover:text-[#ff5500]"
+        className="group inline-flex items-center gap-1.5 text-sm font-medium text-black/80 transition-colors duration-200 hover:text-[#ff5500] cursor-pointer"
       >
         {children}
         {external && (

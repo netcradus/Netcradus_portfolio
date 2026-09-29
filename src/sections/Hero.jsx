@@ -58,6 +58,20 @@ export default function Hero() {
   const copyY = useTransform(scrollYProgress, [0, 1], [0, reduced ? 0 : -50]);
   const fade = useTransform(scrollYProgress, [0, 0.85], [1, reduced ? 1 : 0]);
 
+  /* -------- scroll cue action -------- */
+  const scrollToAbout = (e) => {
+    e.preventDefault();
+    const el = document.getElementById('about');
+    if (el) {
+      const top = el.getBoundingClientRect().top + window.scrollY - 76;
+      window.scrollTo({
+        top: Math.max(top, 0),
+        behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+      });
+      history.replaceState(null, '', '#about');
+    }
+  };
+
   return (
     <section
       id="home"
@@ -84,20 +98,16 @@ export default function Hero() {
         <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-white/70" />
       </div>
 
-      <GridPattern size={72} className="opacity-40 z-[1]" />
-      <Blob className="-left-40 top-10 h-[30rem] w-[30rem] z-[1]" from="#ff5500" to="#ffbe5c" opacity={0.12} />
-      <Blob className="-right-32 top-40 h-[26rem] w-[26rem] z-[1]" from="#ffbe5c" to="#ff5500" opacity={0.1} />
+      <GridPattern size={72} className="pointer-events-none opacity-40 z-[1]" />
+      <Blob className="pointer-events-none -left-40 top-10 h-[30rem] w-[30rem] z-[1]" from="#ff5500" to="#ffbe5c" opacity={0.12} />
+      <Blob className="pointer-events-none -right-32 top-40 h-[26rem] w-[26rem] z-[1]" from="#ffbe5c" to="#ff5500" opacity={0.1} />
       <motion.div
-        className="absolute inset-0 z-[1] opacity-[0.45]"
+        className="pointer-events-none absolute inset-0 z-[1] opacity-[0.45]"
         style={reduced ? undefined : { x: backX, y: backY }}
         aria-hidden="true"
       >
         <NetworkLines />
       </motion.div>
-      <div
-        aria-hidden="true"
-        className="absolute inset-x-0 bottom-0 z-[1] h-32 bg-gradient-to-b from-transparent to-surface"
-      />
 
       {/* ---------- content ---------- */}
       <div className="container-page relative pb-16 pt-32 sm:pt-40 lg:pb-24 lg:pt-36">
@@ -260,31 +270,44 @@ export default function Hero() {
         {/* ---- scroll cue ---- */}
         <motion.a
           href="#about"
-          className="group mt-14 hidden items-center gap-3 text-xs font-semibold uppercase tracking-[0.24em] text-muted transition-colors hover:text-ink lg:inline-flex"
+          onClick={scrollToAbout}
+          className="group mt-14 hidden items-center gap-3 text-xs font-semibold uppercase tracking-[0.24em] text-muted transition-colors hover:text-ink lg:inline-flex cursor-pointer relative z-20"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: reduced ? 0 : 1.5, duration: 0.6 }}
         >
-          <span className="flex h-9 w-9 items-center justify-center rounded-full border border-ink/15 transition-colors group-hover:border-ink/40">
+          <span className="flex h-9 w-9 items-center justify-center rounded-full border border-ink/15 transition-colors group-hover:border-ink/40 group-hover:bg-ink/5">
             <ArrowDown className="h-4 w-4 transition-transform duration-300 group-hover:translate-y-0.5 text-ink" aria-hidden="true" />
           </span>
           Scroll to explore
         </motion.a>
       </div>
 
-      {/* services index strip with vibrant orange background and black text */}
-      <div className="relative border-t border-orange-600/30 bg-gradient-to-r from-[#ff5500] via-[#ff6a00] to-[#ff7b00] text-black shadow-lg">
-        <div className="container-page grid grid-cols-2 divide-x divide-black/15 md:grid-cols-4">
+      {/* services index strip with vibrant orange background and solid black text */}
+      <div className="relative z-20 border-t border-black/15 bg-gradient-to-r from-[#ff5500] via-[#ff6a00] to-[#ff7b00] text-black shadow-md">
+        <div className="container-page grid grid-cols-2 divide-x divide-black/20 md:grid-cols-4">
           {services.map((s) => (
             <a
               key={s.id}
               href="#services"
-              className="group flex items-center gap-3 px-3 py-4 sm:py-5 transition-all duration-300 hover:bg-black/10 sm:px-6"
+              onClick={(e) => {
+                e.preventDefault();
+                const el = document.getElementById('services');
+                if (el) {
+                  const top = el.getBoundingClientRect().top + window.scrollY - 76;
+                  window.scrollTo({
+                    top: Math.max(top, 0),
+                    behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+                  });
+                  history.replaceState(null, '', '#services');
+                }
+              }}
+              className="group flex items-center gap-3 px-3 py-4 sm:py-5 transition-all duration-300 hover:bg-black/10 sm:px-6 cursor-pointer"
             >
-              <span className="font-mono text-[0.72rem] font-bold text-black/70 transition-colors group-hover:text-black">
+              <span className="font-mono text-[0.78rem] font-black text-black transition-transform duration-300 group-hover:scale-110">
                 {s.index}
               </span>
-              <span className="truncate text-[0.78rem] font-bold uppercase tracking-[0.14em] text-black transition-colors group-hover:translate-x-0.5 sm:text-[0.85rem]">
+              <span className="truncate text-[0.82rem] sm:text-[0.88rem] font-extrabold uppercase tracking-[0.14em] text-black transition-transform duration-300 group-hover:translate-x-1">
                 {s.shortLabel}
               </span>
               <span

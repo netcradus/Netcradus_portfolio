@@ -4,6 +4,8 @@ import SectionHeading from '../components/ui/SectionHeading';
 import Reveal, { RevealItem } from '../components/ui/Reveal';
 import { industries } from '../data/site';
 import { EASE } from '../lib/animation';
+import { GridPattern, Blob } from '../components/visuals/Visuals';
+import buildImg from '../assets/build.png';
 
 /**
  * Industries / solutions — an editorial pill cluster with size variation and
@@ -26,10 +28,27 @@ export default function Solutions() {
   return (
     <section
       id="solutions"
-      className="relative overflow-hidden bg-white py-24 sm:py-32 lg:py-40"
+      className="relative isolate overflow-hidden py-24 sm:py-32 lg:py-40"
       aria-labelledby="solutions-title"
     >
-      <div className="container-page">
+      {/* ---------- Background Image: build.png ---------- */}
+      <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
+        <img
+          src={buildImg}
+          alt=""
+          className="h-full w-full object-cover object-center scale-105"
+          loading="lazy"
+        />
+        {/* Balanced translucent overlay ensuring build.png is distinctly visible with high text contrast */}
+        <div className="absolute inset-0 bg-white/55" />
+        <div className="absolute inset-0 bg-gradient-to-r from-white/85 via-white/50 to-white/35" />
+        <div className="absolute inset-0 bg-gradient-to-b from-white/90 via-transparent to-white/90" />
+      </div>
+
+      <GridPattern size={64} className="pointer-events-none opacity-30 z-[1]" />
+      <Blob className="pointer-events-none -right-32 top-20 h-[28rem] w-[28rem] z-[1]" from="#ff5500" to="#ffbe5c" opacity={0.12} />
+
+      <div className="container-page relative z-10">
         <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
           <div className="min-w-0">
             <SectionHeading

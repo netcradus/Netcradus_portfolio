@@ -24,6 +24,7 @@ const INITIAL = {
   service: '',
   budget: '',
   message: '',
+  consent: false,
 };
 
 /** Client-side validation — returns an object of field → error message. */
@@ -48,6 +49,9 @@ function validate(values) {
   if (!values.message.trim()) errors.message = 'Tell us a little about the project.';
   else if (values.message.trim().length < 20)
     errors.message = 'Please add a bit more detail (20+ characters).';
+
+  if (!values.consent)
+    errors.consent = 'Please acknowledge the DPDP data processing consent to proceed.';
 
   return errors;
 }
@@ -130,6 +134,7 @@ export default function Contact() {
       budget: true,
       message: true,
       company: true,
+      consent: true,
     });
 
     if (Object.keys(found).length > 0) {
@@ -181,8 +186,14 @@ export default function Contact() {
 
   const asideItems = useMemo(
     () => [
-      { icon: Mail, label: 'Email', value: siteConfig.contactEmail ?? 'Add your business email', placeholder: !siteConfig.contactEmail },
-      { icon: Clock, label: 'Response time', value: 'Within 1 business day', placeholder: true },
+      {
+        icon: Mail,
+        label: 'Email',
+        value: siteConfig.contactEmail || 'info@cyberhaxs.com',
+        href: `mailto:${siteConfig.contactEmail || 'info@cyberhaxs.com'}`,
+        placeholder: false,
+      },
+      { icon: Clock, label: 'Response time', value: 'Within 1 business day', placeholder: false },
       { icon: MapPin, label: 'Locations', value: 'Office address placeholder', placeholder: true },
     ],
     []
@@ -217,16 +228,25 @@ export default function Contact() {
                     <span className="text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-muted">
                       {item.label}
                     </span>
-                    <span
-                      className={`text-sm font-medium ${item.placeholder ? 'text-muted/70 italic' : 'text-ink'}`}
-                    >
-                      {item.value}
-                      {item.placeholder && (
-                        <span className="ml-2 rounded bg-violet-500/10 px-1.5 py-0.5 text-[0.6rem] font-bold uppercase not-italic tracking-wider text-violet-600">
-                          placeholder
-                        </span>
-                      )}
-                    </span>
+                    {item.href ? (
+                      <a
+                        href={item.href}
+                        className="text-sm font-semibold text-ink hover:text-[#ff5500] transition-colors"
+                      >
+                        {item.value}
+                      </a>
+                    ) : (
+                      <span
+                        className={`text-sm font-medium ${item.placeholder ? 'text-muted/70 italic' : 'text-ink'}`}
+                      >
+                        {item.value}
+                        {item.placeholder && (
+                          <span className="ml-2 rounded bg-violet-500/10 px-1.5 py-0.5 text-[0.6rem] font-bold uppercase not-italic tracking-wider text-violet-600">
+                            placeholder
+                          </span>
+                        )}
+                      </span>
+                    )}
                   </span>
                 </div>
               ))}
@@ -417,6 +437,48 @@ export default function Contact() {
                           />
                         </Field>
                       </RevealItem>
+                      <RevealItem className="sm:col-span-2">
+                        <div className={`rounded-xl border p-3.5 sm:p-4 transition-colors ${
+                          touched.consent && errors.consent ? 'border-red-300 bg-red-50/50' : 'border-ink/10 bg-white'
+                        }`}>
+                          <div className="flex items-start gap-3">
+                            <input
+                              id="consent"
+                              name="consent"
+                              type="checkbox"
+                              checked={values.consent}
+                              onChange={(e) => {
+                                const checked = e.target.checked;
+                                setValues((v) => ({ ...v, consent: checked }));
+                                if (touched.consent) {
+                                  setErrors((prev) => {
+                                    const next = { ...prev };
+                                    if (checked) delete next.consent;
+                                    else next.consent = 'Please acknowledge the DPDP data processing consent to proceed.';
+                                    return next;
+                                  });
+                                }
+                              }}
+                              onBlur={blurField('consent')}
+                              className="mt-1 h-4 w-4 rounded border-ink/20 text-royal-600 focus:ring-royal-500/30 cursor-pointer"
+                            />
+                            <label htmlFor="consent" className="text-xs sm:text-[0.82rem] text-muted leading-relaxed cursor-pointer select-none">
+                              I consent to CyberHaxs processing my details for evaluating this project inquiry under the{' '}
+                              <button
+                                type="button"
+                                onClick={() => window.dispatchEvent(new CustomEvent('cyberhaxs:open-dpdp', { detail: { tab: 'guidelines' } }))}
+                                className="font-semibold text-royal-600 underline hover:text-royal-700"
+                              >
+                                DPDP Act, 2023
+                              </button>{' '}
+                              and Privacy Policy with end-to-end encryption.
+                            </label>
+                          </div>
+                          {touched.consent && errors.consent && (
+                            <p className="mt-2 text-xs font-semibold text-red-600">{errors.consent}</p>
+                          )}
+                        </div>
+                      </RevealItem>
                     </Reveal>
 
                     {/* status message */}
@@ -461,7 +523,7 @@ export default function Contact() {
                       </button>
 
                       <p className="text-xs leading-relaxed text-muted">
-                        By submitting you agree to be contacted about your inquiry.
+                        Compliant with Sections 4 & 7 (DPDP Act, 2023) · Purpose-bound data processing.
                       </p>
                     </div>
                   </motion.form>

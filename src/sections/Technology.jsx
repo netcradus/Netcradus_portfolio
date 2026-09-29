@@ -31,11 +31,11 @@ export default function Technology() {
         <img
           src={techBg}
           alt="Technology Stack Background"
-          className="h-full w-full object-cover object-right select-none opacity-90"
+          className="h-full w-full object-cover object-right select-none opacity-95"
         />
         {/* gradient wash on left so pills & text are crystal clear */}
         <div className="absolute inset-0 bg-gradient-to-r from-navy-950 via-navy-950/90 to-transparent sm:via-navy-950/75 lg:w-[65%]" />
-        <div className="absolute inset-0 bg-navy-950/30" />
+        <div className="absolute inset-0 bg-navy-950/25" />
       </div>
 
       <div className="container-page relative w-full">

@@ -87,10 +87,20 @@ export function NetworkLines({ className = '' }) {
  * Browser-window UI mockup used in hero / web-development visuals.
  * `variant` changes the internal layout so visuals don't repeat.
  */
-export function BrowserMockup({ variant = 'dashboard', className = '', accent = ROYAL, image, imgAlt = 'Dashboard preview', aspectRatio = 'aspect-[1440/711]' }) {
+export function BrowserMockup({
+  variant = 'dashboard',
+  className = '',
+  accent = ROYAL,
+  image,
+  imgAlt = 'Dashboard preview',
+  aspectRatio,
+  style,
+  imgClassName = '',
+}) {
   return (
     <div
       className={`overflow-hidden rounded-2xl border border-white/10 bg-navy-800 shadow-[0_40px_90px_-40px_rgba(5,9,28,0.9)] ${className}`}
+      style={style}
     >
       {/* title bar */}
       <div className="flex items-center gap-2 border-b border-white/8 bg-navy-950/70 px-4 py-2.5 sm:py-3">
@@ -101,11 +111,14 @@ export function BrowserMockup({ variant = 'dashboard', className = '', accent = 
       </div>
 
       {image ? (
-        <div className={`relative w-full overflow-hidden bg-navy-900 ${aspectRatio}`}>
+        <div
+          className={`relative w-full overflow-hidden bg-navy-900 ${aspectRatio || ''}`}
+          style={aspectRatio && !aspectRatio.startsWith('aspect-') ? { aspectRatio } : undefined}
+        >
           <img
             src={image}
             alt={imgAlt}
-            className="w-full h-full object-cover object-top block select-none"
+            className={`w-full ${aspectRatio ? 'h-full object-cover' : 'h-auto object-contain'} object-top block select-none ${imgClassName}`}
             loading="eager"
           />
         </div>
@@ -235,7 +248,7 @@ function AnalyticsBody({ accent }) {
 }
 
 /** Phone frame with a simple app UI. */
-export function PhoneMockup({ className = '', accent = VIOLET, image, imgAlt = 'Mobile app preview', aspectRatio = 'aspect-[373/667]' }) {
+export function PhoneMockup({ className = '', accent = VIOLET, image, imgAlt = 'Mobile app preview', aspectRatio, imgClassName = '' }) {
   return (
     <div
       className={`relative w-[170px] sm:w-[200px] md:w-[214px] rounded-[2.2rem] border border-white/15 bg-navy-950 p-2 sm:p-2.5 shadow-[0_40px_80px_-40px_rgba(5,9,28,0.95)] ring-1 ring-white/10 ${className}`}
@@ -244,11 +257,14 @@ export function PhoneMockup({ className = '', accent = VIOLET, image, imgAlt = '
       <div className="absolute left-1/2 top-2.5 sm:top-3 h-1.5 w-12 sm:w-14 -translate-x-1/2 rounded-full bg-white/25 z-20" />
       <div className="mt-3.5 sm:mt-4 overflow-hidden rounded-[1.4rem] bg-navy-800">
         {image ? (
-          <div className={`relative w-full ${aspectRatio} overflow-hidden bg-navy-900`}>
+          <div
+            className={`relative w-full overflow-hidden bg-navy-900 ${aspectRatio || ''}`}
+            style={aspectRatio && !aspectRatio.startsWith('aspect-') ? { aspectRatio } : undefined}
+          >
             <img
               src={image}
               alt={imgAlt}
-              className="w-full h-full object-cover object-top block select-none"
+              className={`w-full ${aspectRatio ? 'h-full object-cover' : 'h-auto object-contain'} object-top block select-none ${imgClassName}`}
               loading="eager"
             />
           </div>

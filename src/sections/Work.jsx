@@ -1,5 +1,5 @@
 import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
-import { ArrowUpRight, Link2 } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { useRef } from 'react';
 import SectionHeading from '../components/ui/SectionHeading';
 import Reveal, { MediaReveal } from '../components/ui/Reveal';
@@ -183,7 +183,7 @@ function ProjectCard({ project }) {
         </ul>
 
         {/* CTA: real link only when a URL exists */}
-        {project.url ? (
+        {project.url && (
           <a
             href={project.url}
             className={`mt-1 inline-flex items-center gap-2.5 text-sm font-semibold text-ink transition-colors duration-300 hover:text-royal-600 ${
@@ -195,18 +195,6 @@ function ProjectCard({ project }) {
               <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
             </span>
           </a>
-        ) : (
-          <span
-            className={`mt-1 inline-flex items-center gap-2.5 text-sm font-medium text-muted/70 ${
-              isRight ? 'lg:ml-auto' : ''
-            }`}
-            title="Add a real project URL in src/data/site.js"
-          >
-            <span className="flex h-9 w-9 items-center justify-center rounded-full border border-dashed border-ink/20">
-              <Link2 className="h-4 w-4" aria-hidden="true" />
-            </span>
-            Case study link — placeholder
-          </span>
         )}
       </Reveal>
     </article>
