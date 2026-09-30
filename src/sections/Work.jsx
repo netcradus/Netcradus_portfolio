@@ -9,6 +9,7 @@ import {
   PhoneMockup,
   Blob,
 } from '../components/visuals/Visuals';
+import erpImg from '../assets/ERP1.png';
 import crmImg from '../assets/crm1 (2).png';
 import web1Img from '../assets/web1.png';
 import app1Img from '../assets/app1.png';
@@ -90,29 +91,33 @@ function ProjectCard({ project }) {
           >
             <div className="w-full max-w-[30rem] transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.045]">
               {project.visual === 'mobile' ? (
-                 <div className="flex justify-center">
-                   <PhoneMockup
-                     className="animate-float"
-                     image={project.visual === 'mobile' || project.id === 'mobile-business-application' ? app1Img : project.image}
-                     aspectRatio="aspect-[373/667]"
-                     imgAlt={project.title}
-                   />
-                 </div>
+                <div className="flex justify-center">
+                  <PhoneMockup
+                    className="animate-float"
+                    image={project.visual === 'mobile' || project.id === 'mobile-business-application' ? app1Img : project.image}
+                    aspectRatio="aspect-[373/667]"
+                    imgAlt={project.title}
+                  />
+                </div>
               ) : (
                 <BrowserMockup
                   image={
-                    project.visual === 'web' || project.id === 'digital-business-platform'
-                      ? web1Img
-                      : project.visual === 'crm' || project.id === 'sales-crm-platform'
-                        ? crmImg
-                        : project.image
+                    project.visual === 'erp' || project.id === 'enterprise-erp-platform'
+                      ? erpImg
+                      : project.visual === 'web' || project.id === 'digital-business-platform'
+                        ? web1Img
+                        : project.visual === 'crm' || project.id === 'sales-crm-platform'
+                          ? crmImg
+                          : project.image
                   }
                   aspectRatio={
-                    project.visual === 'web' || project.id === 'digital-business-platform'
-                      ? 'aspect-[1440/711]'
-                      : project.visual === 'crm' || project.id === 'sales-crm-platform'
-                        ? 'aspect-[1317/767]'
-                        : undefined
+                    project.visual === 'erp' || project.id === 'enterprise-erp-platform'
+                      ? 'aspect-[1440/810]'
+                      : project.visual === 'web' || project.id === 'digital-business-platform'
+                        ? 'aspect-[1440/711]'
+                        : project.visual === 'crm' || project.id === 'sales-crm-platform'
+                          ? 'aspect-[1317/767]'
+                          : undefined
                   }
                   imgAlt={project.title}
                   variant={
@@ -186,9 +191,8 @@ function ProjectCard({ project }) {
         {project.url && (
           <a
             href={project.url}
-            className={`mt-1 inline-flex items-center gap-2.5 text-sm font-semibold text-ink transition-colors duration-300 hover:text-royal-600 ${
-              isRight ? 'lg:ml-auto' : ''
-            }`}
+            className={`mt-1 inline-flex items-center gap-2.5 text-sm font-semibold text-ink transition-colors duration-300 hover:text-royal-600 ${isRight ? 'lg:ml-auto' : ''
+              }`}
           >
             View Project
             <span className="flex h-9 w-9 items-center justify-center rounded-full border border-ink/15 transition-all duration-300 group-hover:border-royal-600 group-hover:bg-royal-600 group-hover:text-white">

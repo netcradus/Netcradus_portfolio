@@ -5,7 +5,7 @@ import SectionHeading from '../components/ui/SectionHeading';
 import Reveal, { RevealItem } from '../components/ui/Reveal';
 import { Field } from '../components/ui/FormField';
 import { inputClass, selectClass, textareaClass } from '../lib/formStyles';
-import { serviceOptions, budgetOptions } from '../data/site';
+import { serviceOptions } from '../data/site';
 import { siteConfig } from '../data/config';
 import { EASE } from '../lib/animation';
 
@@ -22,7 +22,6 @@ const INITIAL = {
   phone: '',
   company: '',
   service: '',
-  budget: '',
   message: '',
   consent: false,
 };
@@ -42,9 +41,6 @@ function validate(values) {
     errors.phone = 'Enter a valid phone number.';
 
   if (!values.service) errors.service = 'Select the service you need.';
-
-  if (!values.budget || budgetOptions.indexOf(values.budget) === 0)
-    errors.budget = 'Select a budget range.';
 
   if (!values.message.trim()) errors.message = 'Tell us a little about the project.';
   else if (values.message.trim().length < 20)
@@ -131,7 +127,6 @@ export default function Contact() {
       email: true,
       phone: true,
       service: true,
-      budget: true,
       message: true,
       company: true,
       consent: true,
@@ -193,7 +188,7 @@ export default function Contact() {
         href: `mailto:${siteConfig.contactEmail || 'info@cyberhaxs.com'}`,
         placeholder: false,
       },
-      { icon: Clock, label: 'Response time', value: 'Within 1 business day', placeholder: false },
+      { icon: Clock, label: 'Response time', value: 'Within 24 hours', placeholder: false },
       { icon: MapPin, label: 'Locations', value: 'Office address placeholder', placeholder: true },
     ],
     []
@@ -275,7 +270,7 @@ export default function Contact() {
                     </h3>
                     <p className="max-w-md text-base leading-relaxed text-muted">
                       {siteConfig.contactEndpoint
-                        ? 'Thanks for reaching out — the CyberHaxs team will get back to you within one business day.'
+                        ? 'Thanks for reaching out — the CyberHaxs team will get back to you within 24 hours.'
                         : 'Your inquiry passed validation and is ready to send once a form endpoint is connected.'}
                     </p>
                     <button
@@ -372,7 +367,7 @@ export default function Contact() {
                         </Field>
                       </RevealItem>
 
-                      <RevealItem>
+                      <RevealItem className="sm:col-span-2">
                         <Field id="service" label="Service Required" required error={touched.service && errors.service}>
                           <select
                             id="service"
@@ -387,27 +382,6 @@ export default function Contact() {
                             <option value="">Select a service</option>
                             {serviceOptions.map((opt) => (
                               <option key={opt} value={opt}>
-                                {opt}
-                              </option>
-                            ))}
-                          </select>
-                        </Field>
-                      </RevealItem>
-
-                      <RevealItem>
-                        <Field id="budget" label="Budget" required error={touched.budget && errors.budget}>
-                          <select
-                            id="budget"
-                            name="budget"
-                            value={values.budget}
-                            onChange={setField('budget')}
-                            onBlur={blurField('budget')}
-                            disabled={isSubmitting}
-                            aria-invalid={Boolean(touched.budget && errors.budget)}
-                            className={selectClass(touched.budget && errors.budget)}
-                          >
-                            {budgetOptions.map((opt, i) => (
-                              <option key={opt} value={i === 0 ? '' : opt}>
                                 {opt}
                               </option>
                             ))}
@@ -438,9 +412,8 @@ export default function Contact() {
                         </Field>
                       </RevealItem>
                       <RevealItem className="sm:col-span-2">
-                        <div className={`rounded-xl border p-3.5 sm:p-4 transition-colors ${
-                          touched.consent && errors.consent ? 'border-red-300 bg-red-50/50' : 'border-ink/10 bg-white'
-                        }`}>
+                        <div className={`rounded-xl border p-3.5 sm:p-4 transition-colors ${touched.consent && errors.consent ? 'border-red-300 bg-red-50/50' : 'border-ink/10 bg-white'
+                          }`}>
                           <div className="flex items-start gap-3">
                             <input
                               id="consent"

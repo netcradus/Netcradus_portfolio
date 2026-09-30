@@ -309,30 +309,30 @@ export const stats = [
 export const testimonials = [
   {
     id: 't-1',
-    isPlaceholder: true,
+    isPlaceholder: false,
     quote:
-      'PLACEHOLDER — This is sample testimonial copy. Replace it with a genuine quote from a CyberHaxs client, including their name, role and company once approved.',
-    name: 'Client Name Placeholder',
-    role: 'Role · Company Name',
-    company: 'Company (placeholder)',
+      'Building a digital platform for a cybersecurity and IT solutions brand like Netcradus requires a partner who understands both design and functionality. Cyberhaxs went above and beyond our expectations. From a clean user interface to optimal performance, their team handled everything with absolute professionalism. Thank you, Cyberhaxs, for helping bring our online identity to life!',
+    name: 'Netcradus',
+    role: 'Cybersecurity & IT Solutions',
+    company: 'Netcradus',
   },
   {
     id: 't-2',
-    isPlaceholder: true,
+    isPlaceholder: false,
     quote:
-      'PLACEHOLDER — This is sample testimonial copy. Replace it with a genuine quote from a CyberHaxs client, including their name, role and company once approved.',
-    name: 'Client Name Placeholder',
-    role: 'Role · Company Name',
-    company: 'Company (placeholder)',
+      'Bringing an organic and holistic brand like Well Ayurveda to life online required a web development partner who could balance aesthetics with seamless e-commerce functionality. Cyberhaxs exceeded our expectations in every way. From a clean UI layout to a smooth checkout experience, they handled it all with absolute expertise. Thank you, Cyberhaxs, for giving our brand such a wonderful digital home!',
+    name: 'Well Ayurveda',
+    role: 'Organic & Holistic Wellness',
+    company: 'Well Ayurveda',
   },
   {
     id: 't-3',
-    isPlaceholder: true,
+    isPlaceholder: false,
     quote:
-      'PLACEHOLDER — This is sample testimonial copy. Replace it with a genuine quote from a CyberHaxs client, including their name, role and company once approved.',
-    name: 'Client Name Placeholder',
-    role: 'Role · Company Name',
-    company: 'Company (placeholder)',
+      'Huge thanks to the Cyberhaxs team for crafting the website for Oouraa (oouraa.com)! Their ability to translate complex security concepts into a clean, professional, and responsive web interface was impressive. If you want quality development and a seamless collaboration process, Cyberhaxs is the team to call.',
+    name: 'Ooura',
+    role: 'Autonomous Cyber Security',
+    company: 'Oouraa',
   },
 ];
 

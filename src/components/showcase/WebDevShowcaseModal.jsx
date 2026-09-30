@@ -18,7 +18,7 @@ import { BrowserMockup } from '../visuals/Visuals';
 
 // Project image assets
 import web1Img from '../../assets/web1.png';
-import tech2Img from '../../assets/tech2.png';
+import tech2Img from '../../assets/robo.jpg';
 import buildImg from '../../assets/build.png';
 import crm2Img from '../../assets/crm2 (2).png';
 
@@ -259,12 +259,20 @@ export default function WebDevShowcaseModal() {
                   >
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
                       {PROJECTS.map((project) => (
-                        <motion.div
+                        <motion.a
                           key={project.id}
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
                           whileHover={{ y: -8, scale: 1.02 }}
                           transition={{ duration: 0.3, ease: EASE }}
-                          onClick={() => setSelectedProjectId(project.id)}
-                          className="group relative flex flex-col items-center justify-between rounded-2xl sm:rounded-3xl border border-zinc-800/90 bg-black p-7 sm:p-8 min-h-[380px] sm:min-h-[440px] shadow-[0_20px_45px_rgba(0,0,0,0.45)] hover:border-[#ff5500]/80 hover:shadow-[0_25px_60px_-10px_rgba(255,85,0,0.45)] transition-all cursor-pointer select-none overflow-hidden"
+                          onClick={(e) => {
+                            if (project.liveUrl && project.liveUrl !== '#') {
+                              window.open(project.liveUrl, '_blank', 'noopener,noreferrer');
+                            }
+                          }}
+                          title={`Open ${project.title} (${project.liveUrl})`}
+                          className="group relative flex flex-col items-center justify-between rounded-2xl sm:rounded-3xl border border-zinc-800/90 bg-black p-7 sm:p-8 min-h-[380px] sm:min-h-[440px] shadow-[0_20px_45px_rgba(0,0,0,0.45)] hover:border-[#ff5500]/80 hover:shadow-[0_25px_60px_-10px_rgba(255,85,0,0.45)] transition-all cursor-pointer select-none overflow-hidden block text-inherit no-underline"
                         >
                           {/* Ambient Top Glow on Hover */}
                           <div className="pointer-events-none absolute -top-16 inset-x-0 h-32 bg-gradient-to-b from-[#ff5500]/15 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
@@ -274,18 +282,8 @@ export default function WebDevShowcaseModal() {
                             <span className="text-[0.65rem]">▼</span>
                           </div>
 
-                          {/* Center Brand Logo (Clickable Link to Live URL) */}
-                          <a
-                            href={project.liveUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            onClick={(e) => {
-                              // If clicked directly on logo, navigate to website
-                              e.stopPropagation();
-                            }}
-                            title={`Visit ${project.title} (${project.liveUrl})`}
-                            className="flex items-center justify-center my-auto py-4 h-32 w-full px-2 transform transition-transform duration-400 group-hover:scale-110 z-20 hover:opacity-95"
-                          >
+                          {/* Center Brand Logo */}
+                          <div className="flex items-center justify-center my-auto py-4 h-32 w-full px-2 transform transition-transform duration-400 group-hover:scale-110 z-20">
                             <img
                               src={project.logoImg}
                               alt={`${project.title} logo`}
@@ -293,17 +291,20 @@ export default function WebDevShowcaseModal() {
                                 project.id === 'vastraalane' ? 'rounded-full' : ''
                               }`}
                             />
-                          </a>
+                          </div>
 
-                          {/* Bottom Content Info */}
+                          {/* Bottom Content Info (Text) */}
                           <div className="flex flex-col items-center gap-2 text-center w-full z-10">
                             {/* Center separator dot */}
                             <span className="h-1 w-1 rounded-full bg-white/30 group-hover:bg-[#ff7b00] transition-colors" />
 
-                            {/* Title */}
-                            <h3 className="font-display text-sm sm:text-[0.95rem] font-black uppercase tracking-[0.2em] text-white group-hover:text-[#ffaa2b] transition-colors mt-1">
-                              {project.title}
-                            </h3>
+                            {/* Title / Text */}
+                            <div className="flex items-center gap-1.5 mt-1">
+                              <h3 className="font-display text-sm sm:text-[0.95rem] font-black uppercase tracking-[0.2em] text-white group-hover:text-[#ffaa2b] transition-colors">
+                                {project.title}
+                              </h3>
+                              <ExternalLink className="h-3.5 w-3.5 text-white/40 group-hover:text-[#ff7b00] transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                            </div>
 
                             {/* Number */}
                             <span className="font-mono text-sm sm:text-base font-bold text-[#ff7b00] group-hover:scale-110 transition-transform">
@@ -313,7 +314,7 @@ export default function WebDevShowcaseModal() {
 
                           {/* Bottom Center Indicator Line */}
                           <div className="w-10 h-1 rounded-full bg-white/10 group-hover:bg-[#ff5500] group-hover:w-16 transition-all duration-300 mt-4" />
-                        </motion.div>
+                        </motion.a>
                       ))}
                     </div>
                   </motion.div>

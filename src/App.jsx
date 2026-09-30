@@ -7,6 +7,7 @@ import ConsentBanner from './components/legal/ConsentBanner';
 import WebDevShowcaseModal from './components/showcase/WebDevShowcaseModal';
 import AppDevShowcaseModal from './components/showcase/AppDevShowcaseModal';
 import CrmShowcaseModal from './components/showcase/CrmShowcaseModal';
+import ErpShowcaseModal from './components/showcase/ErpShowcaseModal';
 
 /**
  * CyberHaxs — root application shell.
@@ -31,6 +32,7 @@ export default function App() {
       <WebDevShowcaseModal />
       <AppDevShowcaseModal />
       <CrmShowcaseModal />
+      <ErpShowcaseModal />
       <DPDPPrivacyModal />
       <ConsentBanner />
     </PreloaderGate>

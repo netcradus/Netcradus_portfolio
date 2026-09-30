@@ -103,11 +103,10 @@ export default function Navbar() {
       >
         <nav
           aria-label="Main"
-          className={`container-page mx-auto flex h-16 max-w-[86rem] items-center justify-between rounded-2xl px-4 transition-all duration-500 sm:px-6 ${
-            scrolled && !open
+          className={`container-page mx-auto flex h-16 max-w-[86rem] items-center justify-between rounded-2xl px-4 transition-all duration-500 sm:px-6 ${scrolled && !open
               ? 'border border-ink/8 bg-white/85 shadow-[0_14px_40px_-24px_rgba(10,16,46,0.45)] backdrop-blur-xl'
               : 'border border-transparent bg-transparent'
-          }`}
+            }`}
         >
           <a
             href="#home"
@@ -128,26 +127,23 @@ export default function Navbar() {
                     href={item.href}
                     onClick={(e) => goTo(e, item.href)}
                     aria-current={isActive ? 'true' : undefined}
-                    className={`group relative inline-flex items-center rounded-full px-4 py-2 text-[0.9rem] font-medium transition-colors duration-300 ${
-                      isActive
+                    className={`group relative inline-flex items-center rounded-full px-4 py-2 text-[0.9rem] font-medium transition-colors duration-300 ${isActive
                         ? overDark
                           ? 'text-cyan-300'
                           : 'text-royal-600'
                         : overDark
                           ? 'text-white/70 hover:text-white'
                           : 'text-ink/70 hover:text-ink'
-                    }`}
+                      }`}
                   >
                     <span className="relative z-10">{item.label}</span>
                     <span
                       aria-hidden="true"
-                      className={`absolute inset-0 rounded-full transition-transform duration-300 ${
-                        overDark ? 'bg-white/12' : 'bg-royal-50'
-                      } ${
-                        isActive
+                      className={`absolute inset-0 rounded-full transition-transform duration-300 ${overDark ? 'bg-white/12' : 'bg-royal-50'
+                        } ${isActive
                           ? 'scale-100 opacity-100'
                           : 'scale-75 opacity-0 group-hover:scale-100 group-hover:opacity-100'
-                      }`}
+                        }`}
                     />
                   </a>
                 </li>
@@ -173,11 +169,10 @@ export default function Navbar() {
               aria-expanded={open}
               aria-controls="mobile-menu"
               aria-label={open ? 'Close menu' : 'Open menu'}
-              className={`relative z-[60] inline-flex h-11 w-11 items-center justify-center rounded-xl border backdrop-blur transition-colors lg:hidden ${
-                overDark
+              className={`relative z-[60] inline-flex h-11 w-11 items-center justify-center rounded-xl border backdrop-blur transition-colors lg:hidden ${overDark
                   ? 'border-white/20 bg-white/10 text-white hover:bg-white/20'
                   : 'border-ink/10 bg-white/70 text-ink hover:bg-white'
-              }`}
+                }`}
             >
               <AnimatePresence mode="wait" initial={false}>
                 <motion.span
@@ -250,9 +245,8 @@ function MobileMenu({ open, onClose, goTo, active }) {
                   <a
                     href={item.href}
                     onClick={(e) => goTo(e, item.href)}
-                    className={`group flex items-center justify-between border-b border-white/8 py-4 font-display text-[clamp(1.9rem,9vw,3rem)] font-bold leading-none tracking-[-0.03em] transition-colors ${
-                      active === item.id ? 'text-cyan-300' : 'text-white hover:text-violet-400'
-                    }`}
+                    className={`group flex items-center justify-between border-b border-white/8 py-4 font-display text-[clamp(1.9rem,9vw,3rem)] font-bold leading-none tracking-[-0.03em] transition-colors ${active === item.id ? 'text-cyan-300' : 'text-white hover:text-violet-400'
+                      }`}
                   >
                     <span className="flex items-baseline gap-4">
                       <span className="font-sans text-xs font-medium tabular-nums text-white/35">

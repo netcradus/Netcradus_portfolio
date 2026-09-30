@@ -1,26 +1,10 @@
 import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import SectionHeading from '../components/ui/SectionHeading';
-import Reveal, { RevealItem } from '../components/ui/Reveal';
+import Reveal from '../components/ui/Reveal';
 import { industries } from '../data/site';
-import { EASE } from '../lib/animation';
 import { GridPattern, Blob } from '../components/visuals/Visuals';
 import buildImg from '../assets/build.png';
-
-/**
- * Industries / solutions — an editorial pill cluster with size variation and
- * staggered entrance instead of a grid of identical cards.
- */
-const SIZES = [
-  'text-[clamp(1.5rem,4.6vw,3.4rem)]',
-  'text-[clamp(1.15rem,3vw,2.2rem)]',
-  'text-[clamp(1.35rem,3.8vw,2.8rem)]',
-  'text-[clamp(1.05rem,2.6vw,1.9rem)]',
-  'text-[clamp(1.25rem,3.4vw,2.5rem)]',
-  'text-[clamp(1rem,2.4vw,1.7rem)]',
-  'text-[clamp(1.4rem,4vw,3rem)]',
-  'text-[clamp(1.1rem,2.8vw,2.1rem)]',
-];
 
 export default function Solutions() {
   const reduced = useReducedMotion();
@@ -69,40 +53,94 @@ export default function Solutions() {
           </Reveal>
         </div>
 
-        {/* --------- pill cluster --------- */}
-        <Reveal stagger className="mt-14 flex flex-wrap items-baseline gap-x-5 gap-y-4 sm:mt-20 sm:gap-x-8 sm:gap-y-6" amount={0.1}>
-          {industries.map((item, i) => (
-            <RevealItem key={item.id} className="inline-flex">
-              <motion.a
-                href="#contact"
-                className={`group relative inline-flex items-baseline gap-2.5 font-display font-bold uppercase leading-[1] tracking-[-0.035em] text-ink/85 transition-colors duration-400 hover:text-transparent sm:gap-3 ${SIZES[i % SIZES.length]}`}
-                whileHover={reduced ? undefined : { y: -6 }}
-                transition={{ duration: 0.35, ease: EASE }}
-                aria-label={`Discuss a project for ${item.label}`}
-              >
-                {/* gradient fill on hover via clip */}
-                <span
-                  className="pointer-events-none absolute inset-0 bg-gradient-to-r from-royal-600 via-violet-500 to-cyan-400 bg-clip-text text-transparent opacity-0 transition-opacity duration-400 group-hover:opacity-100"
-                  aria-hidden="true"
+        {/* --------- Uniform Size Sliding Marquee (Left to Right) --------- */}
+        <div className="relative mt-12 sm:mt-16 flex flex-col gap-5 sm:gap-7 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_3%,black_97%,transparent)]">
+          {/* Row 1: Startups, SMEs, Enterprises, Healthcare */}
+          <div className="flex overflow-hidden py-1">
+            <motion.div
+              className="flex w-max gap-8 sm:gap-12 md:gap-16 items-baseline"
+              animate={
+                reduced
+                  ? {}
+                  : {
+                      x: ['-50%', '0%'], // Slide Left to Right
+                    }
+              }
+              transition={{
+                ease: 'linear',
+                duration: 22,
+                repeat: Infinity,
+              }}
+            >
+              {[
+                ...industries.slice(0, 4),
+                ...industries.slice(0, 4),
+                ...industries.slice(0, 4),
+                ...industries.slice(0, 4),
+                ...industries.slice(0, 4),
+                ...industries.slice(0, 4),
+              ].map((item, idx) => (
+                <a
+                  key={`row1-${item.id}-${idx}`}
+                  href="#contact"
+                  className="group inline-flex items-baseline gap-2.5 sm:gap-3.5 shrink-0 font-display font-bold uppercase tracking-tight text-ink/90 transition-colors duration-300 hover:text-[#ff5500] select-none text-2xl sm:text-3xl md:text-4xl lg:text-[2.65rem]"
+                  aria-label={`Discuss a project for ${item.label}`}
                 >
-                  {item.label}
-                </span>
-                <span className="relative transition-opacity duration-300 group-hover:opacity-0">
-                  {item.label}
-                </span>
+                  <span className="transition-colors duration-300 group-hover:text-[#ff5500]">
+                    {item.label}
+                  </span>
+                  <ArrowUpRight
+                    className="h-4 w-4 sm:h-5 sm:w-5 -translate-y-1 text-[#ff5500] opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100"
+                    aria-hidden="true"
+                  />
+                </a>
+              ))}
+            </motion.div>
+          </div>
 
-                <span className="font-sans text-[0.62rem] font-semibold tracking-[0.2em] text-muted/55 transition-all duration-300 group-hover:-translate-y-1 group-hover:text-royal-600 sm:text-[0.7rem]">
-                  {String(i + 1).padStart(2, '0')}
-                </span>
-
-                <ArrowUpRight
-                  className="h-4 w-4 -translate-y-1 text-royal-600 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100 sm:h-5 sm:w-5"
-                  aria-hidden="true"
-                />
-              </motion.a>
-            </RevealItem>
-          ))}
-        </Reveal>
+          {/* Row 2: Education, Retail, E-Commerce, Professional Services */}
+          <div className="flex overflow-hidden py-1">
+            <motion.div
+              className="flex w-max gap-8 sm:gap-12 md:gap-16 items-baseline"
+              animate={
+                reduced
+                  ? {}
+                  : {
+                      x: ['-50%', '0%'], // Slide Left to Right
+                    }
+              }
+              transition={{
+                ease: 'linear',
+                duration: 26,
+                repeat: Infinity,
+              }}
+            >
+              {[
+                ...industries.slice(4, 8),
+                ...industries.slice(4, 8),
+                ...industries.slice(4, 8),
+                ...industries.slice(4, 8),
+                ...industries.slice(4, 8),
+                ...industries.slice(4, 8),
+              ].map((item, idx) => (
+                <a
+                  key={`row2-${item.id}-${idx}`}
+                  href="#contact"
+                  className="group inline-flex items-baseline gap-2.5 sm:gap-3.5 shrink-0 font-display font-bold uppercase tracking-tight text-ink/90 transition-colors duration-300 hover:text-[#ff5500] select-none text-2xl sm:text-3xl md:text-4xl lg:text-[2.65rem]"
+                  aria-label={`Discuss a project for ${item.label}`}
+                >
+                  <span className="transition-colors duration-300 group-hover:text-[#ff5500]">
+                    {item.label}
+                  </span>
+                  <ArrowUpRight
+                    className="h-4 w-4 sm:h-5 sm:w-5 -translate-y-1 text-[#ff5500] opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100"
+                    aria-hidden="true"
+                  />
+                </a>
+              ))}
+            </motion.div>
+          </div>
+        </div>
 
         {/* --------- footer note --------- */}
         <Reveal delay={0.25} className="mt-14 border-t border-ink/10 pt-8">

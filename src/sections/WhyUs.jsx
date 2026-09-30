@@ -11,7 +11,7 @@ import {
 import SectionHeading from '../components/ui/SectionHeading';
 import Reveal, { RevealItem } from '../components/ui/Reveal';
 import { whyUs } from '../data/site';
-import bg6Img from '../assets/bg6.png';
+import bgfImg from '../assets/bgf.png';
 
 const ICONS = {
   custom: Code2,
@@ -30,16 +30,14 @@ const ICONS = {
  */
 export default function WhyUs() {
   return (
-    <section id="why" className="relative overflow-hidden bg-slate-900 py-24 sm:py-32 lg:py-40" aria-labelledby="why-title">
-      {/* Background Image: bg6.png with high visibility */}
-      <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
+    <section id="why" className="relative isolate overflow-hidden bg-white py-24 sm:py-32 lg:py-40" aria-labelledby="why-title">
+      {/* Background Image: bgf.png with high visibility */}
+      <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
         <img
-          src={bg6Img}
+          src={bgfImg}
           alt="Why Choose CyberHaxs Background"
           className="h-full w-full object-cover object-center select-none"
         />
-        <div className="absolute inset-0 bg-white/45" />
-        <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-transparent to-white/70" />
       </div>
 
       <div className="container-page relative z-10">

@@ -220,6 +220,7 @@
 @utility no-scrollbar {
   scrollbar-width: none;
   -ms-overflow-style: none;
+
   &::-webkit-scrollbar {
     display: none;
   }
@@ -230,16 +231,19 @@
   from {
     transform: translate3d(0, 0, 0);
   }
+
   to {
     transform: translate3d(-50%, 0, 0);
   }
 }
 
 @keyframes float-y {
+
   0%,
   100% {
     transform: translate3d(0, 0, 0);
   }
+
   50% {
     transform: translate3d(0, -14px, 0);
   }
@@ -262,10 +266,12 @@
     transform: scale(0.9);
     opacity: 0.55;
   }
+
   70% {
     transform: scale(1.6);
     opacity: 0;
   }
+
   100% {
     opacity: 0;
   }
@@ -275,21 +281,26 @@
   animation: marquee-x var(--marquee-duration, 42s) linear infinite;
   will-change: transform;
 }
+
 .animate-marquee-reverse {
   animation: marquee-x var(--marquee-duration, 42s) linear infinite reverse;
   will-change: transform;
 }
+
 .animate-float {
   animation: float-y 7s var(--ease-soft) infinite;
 }
+
 .animate-spin-slow {
   animation: spin-slow 34s linear infinite;
 }
+
 .animate-dash {
   stroke-dasharray: 1400;
   stroke-dashoffset: 1400;
   animation: dash-draw 3s var(--ease-out-expo) forwards;
 }
+
 .animate-pulse-ring {
   animation: pulse-ring 2.6s var(--ease-soft) infinite;
 }

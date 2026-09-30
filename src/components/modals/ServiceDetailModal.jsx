@@ -19,11 +19,12 @@ import { EASE } from '../../lib/animation';
 import { BrowserMockup, PhoneMockup } from '../visuals/Visuals';
 
 // Import project images
+import erpImg from '../../assets/erp.png';
 import web1Img from '../../assets/web1.png';
 import app1Img from '../../assets/app1.png';
 import crm1Img from '../../assets/crm1 (2).png';
 import crm2Img from '../../assets/crm2 (2).png';
-import tech2Img from '../../assets/tech2.png';
+import tech2Img from '../../assets/robo.jpg';
 import logo1Img from '../../assets/logo1.png';
 
 const SERVICES_DATA = {
@@ -118,7 +119,7 @@ const SERVICES_DATA = {
     gradient: 'from-[#ffaa2b] to-[#ff5500]',
     projectTitle: 'Netcradus Enterprise ERP Platform',
     projectLogoText: 'NETCRADUS ERP (ACIS)',
-    image: tech2Img,
+    image: erpImg,
     mockupType: 'browser',
     overview:
       'Eliminate operational silos with a custom ERP platform that connects your core business functions into a single source of truth. We build automated workflows that reduce manual overhead, eliminate data discrepancies, and provide executive visibility in real time.',

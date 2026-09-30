@@ -1,7 +1,7 @@
 import { motion, useReducedMotion } from 'framer-motion';
 import SectionHeading from '../components/ui/SectionHeading';
 import Reveal from '../components/ui/Reveal';
-import techBg from '../assets/tech2.png';
+import techBg from '../assets/robo.jpg';
 import { techGroups } from '../data/site';
 import { EASE } from '../lib/animation';
 
@@ -14,7 +14,7 @@ const GROUP_STYLES = {
 };
 
 /**
- * Technology stack section with tech2.png neon laptop background
+ * Technology stack section with robo.jpg AI robotics background
  * and categorized technology pills.
  */
 export default function Technology() {
@@ -26,16 +26,16 @@ export default function Technology() {
       className="relative isolate overflow-hidden bg-navy-950 py-24 text-white sm:py-32 lg:py-36 min-h-[640px] flex flex-col justify-center"
       aria-labelledby="tech-title"
     >
-      {/* Background tech2.png */}
+      {/* Background robo.jpg */}
       <div className="absolute inset-0 -z-10 overflow-hidden">
         <img
           src={techBg}
           alt="Technology Stack Background"
-          className="h-full w-full object-cover object-right select-none opacity-95"
+          className="h-full w-full object-cover object-right select-none opacity-75 filter saturate-[0.6] brightness-[0.75] contrast-[0.95]"
         />
         {/* gradient wash on left so pills & text are crystal clear */}
         <div className="absolute inset-0 bg-gradient-to-r from-navy-950 via-navy-950/90 to-transparent sm:via-navy-950/75 lg:w-[65%]" />
-        <div className="absolute inset-0 bg-navy-950/25" />
+        <div className="absolute inset-0 bg-navy-950/30" />
       </div>
 
       <div className="container-page relative w-full">
@@ -56,40 +56,59 @@ export default function Technology() {
           </Reveal>
         </div>
 
-        {/* Tech rows */}
-        <div className="relative mt-12 flex flex-col gap-5 sm:mt-16 sm:gap-6 lg:max-w-[62%]">
-          {techGroups.map((group, i) => (
-            <motion.div
-              key={group.id}
-              className="flex flex-col sm:flex-row sm:items-center gap-2.5 sm:gap-5"
-              initial={reduced ? { opacity: 1 } : { opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.6, ease: EASE, delay: i * 0.08 }}
-            >
-              {/* Category label with divider */}
-              <div className="flex items-center gap-3 sm:w-28 sm:justify-end sm:border-r sm:border-white/15 sm:pr-4">
-                <span className="font-mono text-[0.72rem] font-bold uppercase tracking-[0.22em] text-white/50">
-                  {group.label}
-                </span>
-              </div>
-
-              {/* Pills */}
-              <div className="flex flex-wrap gap-2 sm:gap-2.5">
-                {group.items.map((tech) => (
-                  <span
-                    key={tech}
-                    className={`inline-flex items-center rounded-full border px-3.5 py-1.5 text-xs sm:text-[0.82rem] font-medium tracking-wide shadow-sm backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 ${
-                      GROUP_STYLES[group.id] ||
-                      'border-white/12 bg-white/5 text-white/80'
-                    }`}
-                  >
-                    {tech}
+        {/* Tech rows with left-to-right sliding animation */}
+        <div className="relative mt-12 flex flex-col gap-4 sm:mt-16 sm:gap-5 lg:max-w-[65%]">
+          {techGroups.map((group, i) => {
+            // Repeat items to ensure seamless infinite looping marquee
+            const repeatedItems = [...group.items, ...group.items, ...group.items, ...group.items];
+            return (
+              <motion.div
+                key={group.id}
+                className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 overflow-hidden"
+                initial={reduced ? { opacity: 1 } : { opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.6, ease: EASE, delay: i * 0.08 }}
+              >
+                {/* Category label with divider */}
+                <div className="flex items-center gap-3 sm:w-28 sm:justify-end sm:border-r sm:border-white/15 sm:pr-4 shrink-0 z-10">
+                  <span className="font-mono text-[0.72rem] font-bold uppercase tracking-[0.22em] text-white/60">
+                    {group.label}
                   </span>
-                ))}
-              </div>
-            </motion.div>
-          ))}
+                </div>
+
+                {/* Sliding Marquee Track: Moving Left to Right */}
+                <div className="relative flex-1 overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_4%,black_90%,transparent)]">
+                  <motion.div
+                    className="flex w-max gap-2 sm:gap-2.5 py-0.5"
+                    animate={
+                      reduced
+                        ? {}
+                        : {
+                            x: ['-50%', '0%'], // Slides left to right
+                          }
+                    }
+                    transition={{
+                      ease: 'linear',
+                      duration: 18 + (i % 3) * 3, // smoothly staggered durations
+                      repeat: Infinity,
+                    }}
+                  >
+                    {repeatedItems.map((tech, idx) => (
+                      <span
+                        key={`${tech}-${idx}`}
+                        className={`inline-flex items-center rounded-full border px-3.5 py-1.5 text-xs sm:text-[0.82rem] font-medium tracking-wide shadow-sm backdrop-blur-md transition-all duration-300 hover:scale-105 shrink-0 select-none ${
+                          GROUP_STYLES[group.id] || 'border-white/12 bg-white/5 text-white/80'
+                        }`}
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </motion.div>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>

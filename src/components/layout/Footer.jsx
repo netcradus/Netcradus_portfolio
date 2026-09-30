@@ -4,7 +4,7 @@ import { siteConfig } from '../../data/config';
 import { services } from '../../data/site';
 import Reveal from '../ui/Reveal';
 import logo1Img from '../../assets/logo1.png';
-import lastBgImg from '../../assets/last.png';
+import robolImg from '../../assets/robol.png';
 
 const COMPANY_LINKS = [
   { label: 'About', href: '#about' },
@@ -24,13 +24,13 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative overflow-hidden bg-white text-black">
-      {/* ---------------- Background Image (Clean without black shadows) ---------------- */}
-      <div className="pointer-events-none absolute inset-0 z-0">
+    <footer className="relative overflow-hidden bg-[#b9d5ea] text-black">
+      {/* ---------------- Robot Image on Right Side ---------------- */}
+      <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
         <img
-          src={lastBgImg}
+          src={robolImg}
           alt=""
-          className="h-full w-full object-cover object-center"
+          className="absolute right-0 bottom-0 top-0 h-full w-auto max-w-[50vw] md:max-w-[42vw] object-contain object-right select-none py-2"
         />
       </div>
 
@@ -128,11 +128,6 @@ export default function Footer() {
                   aria-hidden="true"
                 />
               </a>
-            </li>
-            <li className="pt-1">
-              <span className="text-xs font-medium uppercase tracking-[0.18em] text-black/60">
-                Placeholder contact details
-              </span>
             </li>
           </FooterCol>
         </div>

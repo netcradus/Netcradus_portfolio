@@ -5,10 +5,18 @@ import SectionHeading from '../components/ui/SectionHeading';
 import Reveal from '../components/ui/Reveal';
 import { testimonials } from '../data/site';
 import { EASE } from '../lib/animation';
+import netLogo from '../assets/net.png';
+import aauraaLogo from '../assets/aauraa.png';
+import ayurvedaLogo from '../assets/ayurveda.png';
+
+const testimonialLogos = {
+  't-1': netLogo,
+  't-2': ayurvedaLogo,
+  't-3': aauraaLogo,
+};
 
 /**
  * Elegant testimonial slider.
- * ⚠ Every entry is a clearly-labelled PLACEHOLDER (see src/data/site.js).
  * Fully keyboard accessible: arrows, dots and arrow-key navigation.
  */
 export default function Testimonials() {
@@ -85,7 +93,7 @@ export default function Testimonials() {
             className="relative overflow-hidden rounded-[1.75rem] border border-ink/10 bg-white p-7 shadow-[0_40px_90px_-60px_rgba(10,16,46,0.6)] sm:rounded-[2.5rem] sm:p-12 lg:p-16"
             role="region"
             aria-roledescription="carousel"
-            aria-label="Client testimonials (placeholder content)"
+            aria-label="Client testimonials"
             aria-live="polite"
             tabIndex={0}
             onKeyDown={onKeyDown}
@@ -108,8 +116,13 @@ export default function Testimonials() {
                 className="relative"
               >
                 <div className="mb-6 flex items-center justify-between gap-4">
-                  <span className="inline-flex items-center gap-2 rounded-full border border-violet-500/30 bg-violet-500/10 px-3.5 py-1.5 text-[0.64rem] font-bold uppercase tracking-[0.18em] text-violet-600">
-                    Placeholder testimonial
+                  <span
+                    className={`inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-[0.64rem] font-bold uppercase tracking-[0.18em] ${current.isPlaceholder
+                        ? 'border-violet-500/30 bg-violet-500/10 text-violet-600'
+                        : 'border-brand-orange/30 bg-brand-orange/10 text-brand-orange'
+                      }`}
+                  >
+                    {current.isPlaceholder ? 'Placeholder testimonial' : 'Client Review'}
                   </span>
                   <Quote className="h-9 w-9 text-royal-600/25 sm:h-12 sm:w-12" aria-hidden="true" />
                 </div>
@@ -119,16 +132,29 @@ export default function Testimonials() {
                 </p>
 
                 <footer className="mt-8 flex items-center gap-4 border-t border-ink/10 pt-7">
-                  <span
-                    aria-hidden="true"
-                    className="flex h-12 w-12 flex-none items-center justify-center rounded-full bg-brand-gradient font-display text-sm font-bold text-white"
-                  >
-                    {current.name
-                      .split(' ')
-                      .slice(0, 2)
-                      .map((w) => w[0])
-                      .join('')}
-                  </span>
+                  {testimonialLogos[current.id] ? (
+                    <span
+                      aria-hidden="true"
+                      className="flex h-12 w-12 flex-none items-center justify-center overflow-hidden rounded-full bg-black p-1 border border-ink/10 shadow-sm"
+                    >
+                      <img
+                        src={testimonialLogos[current.id]}
+                        alt={current.name}
+                        className="h-full w-full object-contain"
+                      />
+                    </span>
+                  ) : (
+                    <span
+                      aria-hidden="true"
+                      className="flex h-12 w-12 flex-none items-center justify-center rounded-full bg-brand-gradient font-display text-sm font-bold text-white"
+                    >
+                      {current.name
+                        .split(' ')
+                        .slice(0, 2)
+                        .map((w) => w[0])
+                        .join('')}
+                    </span>
+                  )}
                   <span className="flex flex-col">
                     <cite className="not-italic font-display text-base font-bold text-ink">
                       {current.name}
@@ -149,9 +175,8 @@ export default function Testimonials() {
                   aria-selected={i === index}
                   aria-label={`Testimonial ${i + 1} of ${count}`}
                   onClick={() => setState([i, i > index ? 1 : -1])}
-                  className={`h-1.5 rounded-full transition-all duration-400 ${
-                    i === index ? 'w-9 bg-brand-gradient' : 'w-4 bg-ink/15 hover:bg-ink/30'
-                  }`}
+                  className={`h-1.5 rounded-full transition-all duration-400 ${i === index ? 'w-9 bg-brand-gradient' : 'w-4 bg-ink/15 hover:bg-ink/30'
+                    }`}
                 />
               ))}
               <span className="ml-auto font-mono text-xs tabular-nums text-muted/70">

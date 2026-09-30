@@ -4,6 +4,7 @@ import SectionHeading from '../components/ui/SectionHeading';
 import Reveal from '../components/ui/Reveal';
 import { processSteps } from '../data/site';
 import { EASE } from '../lib/animation';
+import bg5Img from '../assets/bg5.png';
 
 /**
  * "FROM IDEA TO IMPACT." — scroll-driven vertical timeline.
@@ -21,15 +22,27 @@ export default function Process() {
   const fillHeight = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
 
   return (
-    <section id="process" className="relative overflow-hidden bg-surface py-24 sm:py-32 lg:py-40" aria-labelledby="process-title">
+    <section id="process" className="relative overflow-hidden bg-[#eef4f9] py-24 sm:py-32 lg:py-36" aria-labelledby="process-title">
+      {/* Background Image: bg5.png extended vertically across full section height */}
+      <div className="pointer-events-none absolute inset-y-0 right-0 z-0 overflow-hidden w-full lg:w-[40%] xl:w-[36%] flex items-stretch justify-end opacity-25 lg:opacity-95 select-none">
+        <img
+          src={bg5Img}
+          alt="Development Process Roadmap Background"
+          className="h-full w-full object-cover object-right select-none"
+        />
+        {/* Seamless edge blend gradients */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#eef4f9]/30 via-transparent to-[#eef4f9]/30 pointer-events-none" />
+        <div className="absolute inset-y-0 left-0 w-20 bg-gradient-to-r from-[#eef4f9] to-transparent pointer-events-none" />
+      </div>
+
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute -right-32 top-1/3 h-[24rem] w-[24rem] rounded-full opacity-45 blur-[130px]"
+        className="pointer-events-none absolute -right-32 top-1/3 h-[24rem] w-[24rem] rounded-full opacity-35 blur-[130px]"
         style={{ background: 'radial-gradient(circle, rgba(255,170,43,0.25), transparent 65%)' }}
       />
 
-      <div className="container-page relative">
-        <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
+      <div className="container-page relative z-10">
+        <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-14 lg:max-w-[66%] xl:max-w-[68%]">
           {/* -------- sticky heading -------- */}
           <div className="min-w-0 lg:sticky lg:top-28 lg:self-start">
             <SectionHeading

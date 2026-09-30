@@ -6,6 +6,7 @@ import Reveal from '../components/ui/Reveal';
 import { services } from '../data/site';
 import { EASE } from '../lib/animation';
 import { BrowserMockup, PhoneMockup } from '../components/visuals/Visuals';
+import erpImg from '../assets/erp.png';
 import crm2Img from '../assets/crm2 (2).png';
 import web1Img from '../assets/web1.png';
 import app1Img from '../assets/app1.png';
@@ -47,6 +48,8 @@ export default function Services() {
       window.dispatchEvent(new CustomEvent('cyberhaxs:open-app-showcase', { detail: 'app-development' }));
     } else if (id === 'crm-solutions') {
       window.dispatchEvent(new CustomEvent('cyberhaxs:open-crm-showcase', { detail: 'crm-solutions' }));
+    } else if (id === 'erp-solutions') {
+      window.dispatchEvent(new CustomEvent('cyberhaxs:open-erp-showcase', { detail: 'erp-solutions' }));
     }
   };
 
@@ -195,8 +198,15 @@ export default function Services() {
                       imgAlt="Web Development platform"
                       accent="#ff5500"
                     />
+                  ) : active === 'erp-solutions' ? (
+                    <BrowserMockup
+                      image={erpImg}
+                      imgAlt="ERP Solutions platform"
+                      accent="#ffaa2b"
+                    />
                   ) : (
                     <BrowserMockup
+                      image={erpImg}
                       variant="analytics"
                       accent="#ffaa2b"
                     />
