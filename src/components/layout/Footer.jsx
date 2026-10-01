@@ -140,24 +140,6 @@ export default function Footer() {
             © {year} CyberHaxs. All rights reserved.
           </p>
 
-          {/* Social icons strip */}
-          <div className="flex items-center gap-3">
-            {SOCIAL_LINKS.map((s) => {
-              const Icon = s.icon;
-              return (
-                <a
-                  key={s.id}
-                  href={s.href}
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  aria-label={s.label}
-                  className="group relative flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/[0.06] text-white/80 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:scale-110 hover:border-[#ff5500] hover:bg-gradient-to-tr hover:from-[#ff5500] hover:to-[#ff7b00] hover:text-white hover:shadow-[0_0_20px_rgba(255,85,0,0.5)]"
-                >
-                  <Icon className="h-4.5 w-4.5 transition-transform duration-300 group-hover:scale-110" />
-                </a>
-              );
-            })}
-          </div>
 
           <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm font-medium text-white/80">
             <button
