@@ -8,6 +8,7 @@ import { inputClass, selectClass, textareaClass } from '../lib/formStyles';
 import { serviceOptions } from '../data/site';
 import { siteConfig } from '../data/config';
 import { EASE } from '../lib/animation';
+import robotGlassImg from '../assets/graph robot glass.jpg';
 
 const SERVICE_EVENT_MAP = {
   'web-development': 'Web Development',
@@ -245,6 +246,15 @@ export default function Contact() {
                   </span>
                 </div>
               ))}
+            </Reveal>
+
+            {/* Bottom-left illustration */}
+            <Reveal delay={0.3} className="mt-8 pt-2 flex items-center justify-center lg:justify-start">
+              <img
+                src={robotGlassImg}
+                alt="CyberHaxs AI & Analytics Robot"
+                className="h-44 sm:h-52 md:h-60 lg:h-72 w-auto object-contain select-none transition-transform duration-500 hover:scale-105"
+              />
             </Reveal>
           </div>
 

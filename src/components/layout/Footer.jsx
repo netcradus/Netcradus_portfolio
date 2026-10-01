@@ -1,10 +1,9 @@
 import { ArrowUpRight, Instagram, Linkedin, Facebook, Twitter } from 'lucide-react';
-import Logo from '../ui/Logo';
 import { siteConfig } from '../../data/config';
 import { services } from '../../data/site';
 import Reveal from '../ui/Reveal';
-import logo1Img from '../../assets/logo1.png';
-import robolImg from '../../assets/robol.png';
+import logoImg from '../../assets/cyberhaxs-logo.png';
+import downloadBgImg from '../../assets/download.jpg';
 
 const COMPANY_LINKS = [
   { label: 'About', href: '#about' },
@@ -24,14 +23,17 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative overflow-hidden bg-[#b9d5ea] text-black">
-      {/* ---------------- Robot Image on Right Side ---------------- */}
-      <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
+    <footer className="relative overflow-hidden bg-[#0d1520] text-white">
+      {/* ---------------- Background Image ---------------- */}
+      <div className="pointer-events-none absolute inset-0 z-0">
         <img
-          src={robolImg}
+          src={downloadBgImg}
           alt=""
-          className="absolute right-0 bottom-0 top-0 h-full w-auto max-w-[50vw] md:max-w-[42vw] object-contain object-right select-none py-2"
+          className="h-full w-full object-cover object-center select-none"
         />
+        {/* Subtle gradient overlay to enhance readability on the left while preserving globe visual on the right */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0a111a]/95 via-[#0a111a]/80 to-[#0a111a]/40" />
+        <div className="absolute inset-0 bg-black/20" />
       </div>
 
       <div className="container-page relative z-10 pb-10 pt-16 sm:pt-24">
@@ -47,19 +49,19 @@ export default function Footer() {
             }}
           >
             <img
-              src={logo1Img}
+              src={logoImg}
               alt="CyberHaxs"
-              className="h-12 sm:h-16 md:h-20 w-auto max-w-full object-contain transition-transform duration-300 group-hover:scale-105"
+              className="h-10 sm:h-12 md:h-14 w-auto max-w-full object-contain transition-transform duration-300 group-hover:scale-105"
             />
           </a>
         </Reveal>
 
-        <p className="mt-6 max-w-xl text-lg font-medium leading-relaxed text-black/80">
+        <p className="mt-6 max-w-xl text-lg font-medium leading-relaxed text-white/80">
           {siteConfig.tagline}
         </p>
 
         {/* ---------------- Link grid ---------------- */}
-        <div className="mt-16 grid grid-cols-2 gap-y-12 border-t border-black/15 pt-12 sm:mt-20 md:grid-cols-4">
+        <div className="mt-16 grid grid-cols-2 gap-y-12 border-t border-white/15 pt-12 sm:mt-20 md:grid-cols-4">
           <FooterCol title="Services">
             {services.map((s) => (
               <FooterLink
@@ -100,9 +102,9 @@ export default function Footer() {
                     href={s.href}
                     target="_blank"
                     rel="noreferrer noopener"
-                    className="group inline-flex items-center gap-3 text-sm font-medium text-black/85 transition-all duration-200 hover:text-[#ff5500]"
+                    className="group inline-flex items-center gap-3 text-sm font-medium text-white/85 transition-all duration-200 hover:text-[#ff5500]"
                   >
-                    <span className="flex h-7 w-7 items-center justify-center rounded-lg border border-black/15 bg-black/[0.04] text-black/75 transition-all duration-200 group-hover:border-[#ff5500]/50 group-hover:bg-[#ff5500]/15 group-hover:text-[#ff5500] group-hover:shadow-[0_0_12px_rgba(255,85,0,0.35)]">
+                    <span className="flex h-7 w-7 items-center justify-center rounded-lg border border-white/15 bg-white/[0.06] text-white/80 transition-all duration-200 group-hover:border-[#ff5500]/50 group-hover:bg-[#ff5500]/15 group-hover:text-[#ff5500] group-hover:shadow-[0_0_12px_rgba(255,85,0,0.35)]">
                       <Icon className="h-3.5 w-3.5" />
                     </span>
                     <span>{s.label}</span>
@@ -133,8 +135,8 @@ export default function Footer() {
         </div>
 
         {/* ---------------- Bottom bar ---------------- */}
-        <div className="mt-14 flex flex-col gap-6 border-t border-black/15 pt-7 sm:flex-row sm:items-center sm:justify-between">
-          <p className="text-sm font-medium text-black/75">
+        <div className="mt-14 flex flex-col gap-6 border-t border-white/15 pt-7 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-sm font-medium text-white/75">
             © {year} CyberHaxs. All rights reserved.
           </p>
 
@@ -149,7 +151,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noreferrer noopener"
                   aria-label={s.label}
-                  className="group relative flex h-10 w-10 items-center justify-center rounded-full border border-black/15 bg-black/[0.04] text-black/75 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:scale-110 hover:border-[#ff5500] hover:bg-gradient-to-tr hover:from-[#ff5500] hover:to-[#ff7b00] hover:text-white hover:shadow-[0_0_20px_rgba(255,85,0,0.5)]"
+                  className="group relative flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-white/[0.06] text-white/80 backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:scale-110 hover:border-[#ff5500] hover:bg-gradient-to-tr hover:from-[#ff5500] hover:to-[#ff7b00] hover:text-white hover:shadow-[0_0_20px_rgba(255,85,0,0.5)]"
                 >
                   <Icon className="h-4.5 w-4.5 transition-transform duration-300 group-hover:scale-110" />
                 </a>
@@ -157,7 +159,7 @@ export default function Footer() {
             })}
           </div>
 
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm font-medium text-black/80">
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm font-medium text-white/80">
             <button
               type="button"
               onClick={() => window.dispatchEvent(new CustomEvent('cyberhaxs:open-dpdp', { detail: { tab: 'guidelines' } }))}
@@ -196,7 +198,7 @@ export default function Footer() {
 function FooterCol({ title, children }) {
   return (
     <div className="flex flex-col gap-4">
-      <h3 className="text-[0.72rem] font-bold uppercase tracking-[0.24em] text-black/70">
+      <h3 className="text-[0.72rem] font-bold uppercase tracking-[0.24em] text-white/70">
         {title}
       </h3>
       <ul className="flex flex-col gap-2.5">{children}</ul>
@@ -205,14 +207,14 @@ function FooterCol({ title, children }) {
 }
 
 function FooterLink({ href, children, external = false, onClick }) {
-  if (!href) return <li className="text-sm font-medium text-black/60">{children}</li>;
+  if (!href) return <li className="text-sm font-medium text-white/60">{children}</li>;
   return (
     <li>
       <a
         href={href}
         onClick={onClick}
         {...(external ? { target: '_blank', rel: 'noreferrer noopener' } : {})}
-        className="group inline-flex items-center gap-1.5 text-sm font-medium text-black/80 transition-colors duration-200 hover:text-[#ff5500] cursor-pointer"
+        className="group inline-flex items-center gap-1.5 text-sm font-medium text-white/80 transition-colors duration-200 hover:text-[#ff5500] cursor-pointer"
       >
         {children}
         {external && (

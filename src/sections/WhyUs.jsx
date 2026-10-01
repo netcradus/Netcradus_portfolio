@@ -11,7 +11,7 @@ import {
 import SectionHeading from '../components/ui/SectionHeading';
 import Reveal, { RevealItem } from '../components/ui/Reveal';
 import { whyUs } from '../data/site';
-import bgfImg from '../assets/bgf.png';
+import whyUsQuestionImg from '../assets/download (2).jpg';
 
 const ICONS = {
   custom: Code2,
@@ -31,12 +31,12 @@ const ICONS = {
 export default function WhyUs() {
   return (
     <section id="why" className="relative isolate overflow-hidden bg-white py-24 sm:py-32 lg:py-40" aria-labelledby="why-title">
-      {/* Background Image: bgf.png with high visibility */}
-      <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+      {/* 3D Question Mark Graphic on Top-Right — sharp & unblurred */}
+      <div className="pointer-events-none absolute right-2 sm:right-8 md:right-14 lg:right-20 top-4 sm:top-8 lg:top-10 z-0">
         <img
-          src={bgfImg}
-          alt="Why Choose CyberHaxs Background"
-          className="h-full w-full object-cover object-center select-none"
+          src={whyUsQuestionImg}
+          alt="Why CyberHaxs"
+          className="h-36 sm:h-52 md:h-64 lg:h-80 w-auto object-contain select-none"
         />
       </div>
 
