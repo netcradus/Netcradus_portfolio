@@ -269,7 +269,7 @@ export default function CrmShowcaseModal() {
             </div>
 
             {/* ---------------- Main Stage Area ---------------- */}
-            <div className="relative flex-1 min-h-0 overflow-hidden flex items-center justify-center px-6 sm:px-12 py-6 select-none bg-gradient-to-b from-slate-50/80 via-white to-slate-100/70">
+            <div className="relative flex-1 min-h-0 overflow-y-auto overflow-x-hidden flex items-center justify-center px-4 sm:px-12 py-6 select-none bg-gradient-to-b from-slate-50/80 via-white to-slate-100/70">
               {/* Giant Background Watermark Number matching reference image */}
               <div
                 aria-hidden="true"
@@ -286,7 +286,7 @@ export default function CrmShowcaseModal() {
               />
 
               {/* Slide Content Grid: Text on Left + Moving Images on Right */}
-              <div className="relative z-10 w-full h-full max-w-6xl grid lg:grid-cols-[1.1fr_1.6fr] gap-8 sm:gap-12 items-center">
+              <div className="relative z-10 w-full h-full max-w-6xl grid lg:grid-cols-[1.1fr_1.6fr] gap-6 sm:gap-12 items-center py-3 sm:py-0">
                 {/* ---------------- Left Content Column (Black / Dark Text) ---------------- */}
                 <div className="space-y-6">
                   <AnimatePresence mode="wait">
@@ -306,7 +306,7 @@ export default function CrmShowcaseModal() {
 
                       <h2
                         id="crm-showcase-title"
-                        className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold uppercase tracking-tight text-slate-900 leading-[1.05]"
+                        className="font-display text-2xl sm:text-4xl lg:text-5xl font-extrabold uppercase tracking-tight text-slate-900 leading-[1.05]"
                       >
                         {currentSlide.title}
                       </h2>

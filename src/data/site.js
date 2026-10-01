@@ -337,6 +337,93 @@ export const testimonials = [
 ];
 
 /* -------------------------------------------------------------------------- */
+/*  SECURITY SERVICES                                                         */
+/* -------------------------------------------------------------------------- */
+
+export const securityServices = [
+  {
+    id: 'cybersecurity',
+    title: 'Cybersecurity',
+    description: 'End-to-end protection against evolving cyber threats.',
+    accent: 'orange',
+    icon: 'ShieldAlert',
+    side: 'left',
+    badge: 'Proactive Defense',
+    features: ['Threat Intelligence', 'Real-time Perimeter Defense', 'Zero Trust Architecture'],
+  },
+  {
+    id: 'managed-soc',
+    title: 'Managed SOC',
+    description: '24×7 monitoring and rapid threat detection & response.',
+    accent: 'blue',
+    icon: 'Target',
+    side: 'left',
+    badge: '24/7 SecOps',
+    features: ['SIEM & SOAR Integration', 'Incident Response & Triaging', 'Continuous Threat Hunting'],
+  },
+  {
+    id: 'iam',
+    title: 'Identity & Access Management',
+    description: 'Secure identities, enforce least privilege and govern enterprise.',
+    accent: 'orange',
+    icon: 'KeyRound',
+    side: 'left',
+    badge: 'Access Governance',
+    features: ['MFA & SSO Enforcement', 'Role-Based Access Control', 'Privileged Access Management (PAM)'],
+  },
+  {
+    id: 'network-security',
+    title: 'Network Security',
+    description: 'Defend your perimeter and internal network segments.',
+    accent: 'blue',
+    icon: 'Network',
+    side: 'left',
+    badge: 'Segmentation & Firewall',
+    features: ['Next-Gen Firewalls (NGFW)', 'Microsegmentation', 'DDoS Mitigation & VPN'],
+  },
+  {
+    id: 'cloud-security',
+    title: 'Cloud Security',
+    description: 'Secure cloud workloads, SaaS, and hybrid environments.',
+    accent: 'blue',
+    icon: 'Cloud',
+    side: 'right',
+    badge: 'Cloud Defense',
+    features: ['CSPM & CWPP Policies', 'Container & Kubernetes Hardening', 'Multi-Cloud Compliance'],
+  },
+  {
+    id: 'ai-security',
+    title: 'AI Security',
+    description: 'Protect AI models, LLMs, and enterprise agents.',
+    accent: 'blue',
+    icon: 'Cpu',
+    side: 'right',
+    badge: 'AI & LLM Guardrails',
+    features: ['Prompt Injection Defense', 'Data Leakage Prevention', 'Model Poisoning Protection'],
+  },
+  {
+    id: 'enterprise-security',
+    title: 'Enterprise Security',
+    description: 'Tailored, enterprise-grade security programs.',
+    accent: 'orange',
+    icon: 'Building2',
+    side: 'right',
+    badge: 'Enterprise Compliance',
+    features: ['ISO 27001 / SOC 2 / DPDP', 'Risk Assessment & Auditing', 'Executive Security Advisory'],
+  },
+  {
+    id: 'vapt-services',
+    title: 'VAPT Services',
+    description: 'Vulnerability assessment & penetration testing.',
+    accent: 'blue',
+    icon: 'ShieldCheck',
+    side: 'right',
+    badge: 'Penetration Testing',
+    features: ['Web & Mobile App PenTesting', 'API & Cloud Infra Assessment', 'Comprehensive Remediation Reports'],
+  },
+];
+
+/* -------------------------------------------------------------------------- */
 /*  CONTACT FORM                                                              */
 /* -------------------------------------------------------------------------- */
 
@@ -345,6 +432,9 @@ export const serviceOptions = [
   'App Development',
   'ERP',
   'CRM',
+  'Cybersecurity & SOC',
+  'Cloud & AI Security',
+  'VAPT Services',
   'Other',
 ];
 

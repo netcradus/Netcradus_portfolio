@@ -23,7 +23,7 @@ const MEDIA_BG = {
 
 export default function Work() {
   return (
-    <section id="work" className="relative overflow-hidden bg-surface py-24 sm:py-32 lg:py-40" aria-labelledby="work-title">
+    <section id="work" className="relative overflow-hidden bg-surface py-16 sm:py-24 lg:py-32" aria-labelledby="work-title">
       <div className="container-page">
         <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
           <SectionHeading
@@ -43,7 +43,7 @@ export default function Work() {
           </Reveal>
         </div>
 
-        <div className="mt-14 flex flex-col gap-8 sm:mt-20 sm:gap-14">
+        <div className="mt-12 flex flex-col gap-8 sm:mt-16 sm:gap-14">
           {projects.map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}
@@ -86,7 +86,7 @@ function ProjectCard({ project }) {
 
           {/* parallax inner */}
           <motion.div
-            className="absolute inset-0 flex items-center justify-center p-6 sm:p-12"
+            className="absolute inset-0 flex items-center justify-center p-3 sm:p-8 md:p-12"
             style={reduced ? undefined : { y: mediaY, scale: mediaScale }}
           >
             <div className="w-full max-w-[30rem] transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.045]">

@@ -11,7 +11,7 @@ export default function About() {
   const reduced = useReducedMotion();
 
   return (
-    <section id="about" className="relative overflow-hidden bg-white py-24 sm:py-32 lg:py-40" aria-labelledby="about-title">
+    <section id="about" className="relative overflow-hidden bg-white py-16 sm:py-24 lg:py-32" aria-labelledby="about-title">
       <div className="container-page">
         {/* heading spans full width so the two intended lines never rag-wrap */}
         <SectionHeading
@@ -21,7 +21,7 @@ export default function About() {
           headingMaxWidth="max-w-[24ch]"
         />
 
-        <div className="mt-14 grid gap-14 lg:mt-20 lg:grid-cols-2 lg:items-start lg:gap-20">
+        <div className="mt-12 sm:mt-14 grid gap-10 sm:gap-14 lg:mt-20 lg:grid-cols-2 lg:items-start lg:gap-20">
           {/* ---------------- copy ---------------- */}
           <div className="relative min-w-0">
             <Reveal className="flex flex-col gap-5" delay={0.1}>
@@ -32,7 +32,7 @@ export default function About() {
               ))}
             </Reveal>
 
-            <Reveal className="mt-9 flex flex-wrap items-center gap-5" delay={0.2}>
+            <Reveal className="mt-8 sm:mt-9 flex flex-wrap items-center gap-4 sm:gap-5" delay={0.2}>
               <Button href="#contact" withArrow>
                 Work with us
               </Button>
@@ -40,7 +40,7 @@ export default function About() {
             </Reveal>
 
             {/* pillars — hairline list, not cards */}
-            <Reveal stagger className="mt-12 grid gap-x-10 sm:grid-cols-2" amount={0.1}>
+            <Reveal stagger className="mt-10 sm:mt-12 grid gap-x-10 sm:grid-cols-2" amount={0.1}>
               {about.pillars.map((pillar, i) => (
                 <RevealItem
                   key={pillar.title}
@@ -68,7 +68,7 @@ export default function About() {
           {/* ---------------- visual ---------------- */}
           <div className="relative min-w-0 lg:sticky lg:top-28">
             <MediaReveal className="relative">
-              <div className="relative aspect-video w-full overflow-hidden rounded-[2rem] bg-navy-950 border border-white/10 shadow-2xl">
+              <div className="relative aspect-video w-full overflow-hidden rounded-[1.5rem] sm:rounded-[2rem] bg-navy-950 border border-white/10 shadow-2xl">
                 <video
                   src={aboutVideo}
                   autoPlay
@@ -83,13 +83,13 @@ export default function About() {
 
             {/* stat callout */}
             <Reveal
-              className="absolute -bottom-7 left-4 max-w-[15rem] rounded-2xl border border-ink/8 bg-white p-5 shadow-[0_28px_60px_-30px_rgba(10,16,46,0.5)] sm:left-8"
+              className="absolute -bottom-5 sm:-bottom-7 left-3 sm:left-8 max-w-[13rem] sm:max-w-[15rem] rounded-2xl border border-ink/8 bg-white p-4 sm:p-5 shadow-[0_28px_60px_-30px_rgba(10,16,46,0.5)]"
               delay={0.35}
             >
-              <p className="font-display text-xl font-bold tracking-tight text-ink">
+              <p className="font-display text-lg sm:text-xl font-bold tracking-tight text-ink">
                 From Idea to Scale
               </p>
-              <p className="mt-1 text-sm leading-relaxed text-muted">
+              <p className="mt-1 text-xs sm:text-sm leading-relaxed text-muted">
                 One partner across strategy, design, engineering and long-term support.
               </p>
             </Reveal>

@@ -196,7 +196,7 @@ export default function Contact() {
   );
 
   return (
-    <section id="contact" className="relative overflow-hidden bg-white py-24 sm:py-32 lg:py-40" aria-labelledby="contact-title">
+    <section id="contact" className="relative overflow-hidden bg-white pt-16 sm:pt-20 lg:pt-24 pb-8 sm:pb-10 lg:pb-12" aria-labelledby="contact-title">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute -left-40 top-20 h-[26rem] w-[26rem] rounded-full opacity-40 blur-[130px]"
@@ -260,7 +260,7 @@ export default function Contact() {
 
           {/* ---------------- form ---------------- */}
           <Reveal delay={0.1} className="min-w-0">
-            <div className="relative rounded-[1.75rem] border border-ink/10 bg-surface p-6 shadow-[0_40px_90px_-60px_rgba(10,16,46,0.55)] sm:rounded-[2.25rem] sm:p-9 lg:p-11">
+            <div className="relative rounded-[1.75rem] border border-ink/10 bg-surface p-4 sm:p-8 lg:p-11 shadow-[0_40px_90px_-60px_rgba(10,16,46,0.55)] sm:rounded-[2.25rem]">
               <AnimatePresence mode="wait">
                 {successVisible ? (
                   <motion.div

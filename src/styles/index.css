@@ -58,11 +58,11 @@
   --radius-5xl: 2.75rem;
 
   /* ---- Fluid display scale ---- */
-  --text-display-2xl: clamp(2.75rem, 1.1rem + 7.4vw, 8rem);
-  --text-display-xl: clamp(2.4rem, 1rem + 6.4vw, 6.75rem);
-  --text-display-lg: clamp(2rem, 1.1rem + 3.9vw, 4.5rem);
-  --text-display-md: clamp(1.65rem, 1.1rem + 2.3vw, 3rem);
-  --text-display-sm: clamp(1.35rem, 1.05rem + 1.2vw, 2rem);
+  --text-display-2xl: clamp(2.35rem, 1rem + 6.2vw, 8rem);
+  --text-display-xl: clamp(2.1rem, 0.95rem + 5.2vw, 6.75rem);
+  --text-display-lg: clamp(1.85rem, 0.95rem + 3.2vw, 4.5rem);
+  --text-display-md: clamp(1.45rem, 0.95rem + 1.8vw, 3rem);
+  --text-display-sm: clamp(1.2rem, 0.95rem + 1vw, 2rem);
 }
 
 /* ------------------------------------------------------------------ */
@@ -145,7 +145,7 @@
 @utility container-page {
   width: 100%;
   margin-inline: auto;
-  padding-inline: clamp(1.25rem, 4vw, 5rem);
+  padding-inline: clamp(1rem, 4vw, 5rem);
   max-width: 90rem;
 }
 

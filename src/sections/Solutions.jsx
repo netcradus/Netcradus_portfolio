@@ -12,7 +12,7 @@ export default function Solutions() {
   return (
     <section
       id="solutions"
-      className="relative isolate overflow-hidden py-24 sm:py-32 lg:py-40"
+      className="relative isolate overflow-hidden py-16 sm:py-24 lg:py-32"
       aria-labelledby="solutions-title"
     >
       {/* ---------- Background Image: build.png ---------- */}

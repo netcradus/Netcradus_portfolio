@@ -22,7 +22,7 @@ export default function Process() {
   const fillHeight = useTransform(scrollYProgress, [0, 1], ['0%', '100%']);
 
   return (
-    <section id="process" className="relative overflow-hidden bg-[#eef4f9] py-24 sm:py-32 lg:py-36" aria-labelledby="process-title">
+    <section id="process" className="relative overflow-hidden bg-[#eef4f9] py-16 sm:py-24 lg:py-32" aria-labelledby="process-title">
       {/* Background Image: bg5.png extended vertically across full section height */}
       <div className="pointer-events-none absolute inset-y-0 right-0 z-0 overflow-hidden w-full lg:w-[40%] xl:w-[36%] flex items-stretch justify-end opacity-25 lg:opacity-95 select-none">
         <img
@@ -42,7 +42,7 @@ export default function Process() {
       />
 
       <div className="container-page relative z-10">
-        <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-14 lg:max-w-[66%] xl:max-w-[68%]">
+        <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-14 lg:max-w-[66%] xl:max-w-[68%]">
           {/* -------- sticky heading -------- */}
           <div className="min-w-0 lg:sticky lg:top-28 lg:self-start">
             <SectionHeading
@@ -69,20 +69,20 @@ export default function Process() {
           </div>
 
           {/* -------- timeline -------- */}
-          <div ref={railRef} className="relative pl-10 sm:pl-16">
+          <div ref={railRef} className="relative pl-8 sm:pl-16">
             {/* base rail */}
             <span
               aria-hidden="true"
-              className="absolute left-3 top-2 h-[calc(100%-1rem)] w-px bg-ink/12 sm:left-6"
+              className="absolute left-2.5 top-2 h-[calc(100%-1rem)] w-px bg-ink/12 sm:left-6"
             />
             {/* animated fill */}
             <motion.span
               aria-hidden="true"
-              className="absolute left-3 top-2 w-px bg-brand-gradient sm:left-6"
+              className="absolute left-2.5 top-2 w-px bg-brand-gradient sm:left-6"
               style={reduced ? { height: '100%' } : { height: fillHeight }}
             />
 
-            <ol className="flex flex-col gap-8 sm:gap-11">
+            <ol className="flex flex-col gap-7 sm:gap-11">
               {processSteps.map((step) => (
                 <li key={step.id}>
                   <Reveal delay={0.05} y={26} amount={0.5}>
@@ -90,7 +90,7 @@ export default function Process() {
                       {/* node */}
                       <span
                         aria-hidden="true"
-                        className="absolute -left-[2.55rem] top-1.5 flex h-6 w-6 items-center justify-center rounded-full border border-ink/15 bg-white transition-all duration-500 group-hover:border-transparent group-hover:bg-brand-gradient sm:-left-[4.05rem] sm:h-7 sm:w-7"
+                        className="absolute -left-[2.1rem] top-1.5 flex h-5 w-5 items-center justify-center rounded-full border border-ink/15 bg-white transition-all duration-500 group-hover:border-transparent group-hover:bg-brand-gradient sm:-left-[4.05rem] sm:h-7 sm:w-7"
                       >
                         <span className="h-1.5 w-1.5 rounded-full bg-ink/30 transition-all duration-500 group-hover:bg-white" />
                       </span>

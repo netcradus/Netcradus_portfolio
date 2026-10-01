@@ -36,7 +36,7 @@ export default function Footer() {
         <div className="absolute inset-0 bg-black/20" />
       </div>
 
-      <div className="container-page relative z-10 pb-10 pt-16 sm:pt-24">
+      <div className="container-page relative z-10 pb-10 pt-12 sm:pt-16">
         {/* ---------------- Logo ---------------- */}
         <Reveal>
           <a

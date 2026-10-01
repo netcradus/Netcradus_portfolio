@@ -30,13 +30,13 @@ const ICONS = {
  */
 export default function WhyUs() {
   return (
-    <section id="why" className="relative isolate overflow-hidden bg-white py-24 sm:py-32 lg:py-40" aria-labelledby="why-title">
+    <section id="why" className="relative isolate overflow-hidden bg-white py-16 sm:py-24 lg:py-32" aria-labelledby="why-title">
       {/* 3D Question Mark Graphic on Top-Right — sharp & unblurred */}
       <div className="pointer-events-none absolute right-2 sm:right-8 md:right-14 lg:right-20 top-4 sm:top-8 lg:top-10 z-0">
         <img
           src={whyUsQuestionImg}
           alt="Why CyberHaxs"
-          className="h-36 sm:h-52 md:h-64 lg:h-80 w-auto object-contain select-none"
+          className="h-28 sm:h-48 md:h-64 lg:h-80 w-auto object-contain select-none opacity-40 sm:opacity-100"
         />
       </div>
 
@@ -52,12 +52,12 @@ export default function WhyUs() {
           className="max-w-4xl"
         />
 
-        <Reveal stagger className="mt-14 grid border-l border-t border-ink/15 sm:mt-20 sm:grid-cols-2 lg:grid-cols-4 rounded-2xl overflow-hidden shadow-2xl backdrop-blur-sm" amount={0.05}>
+        <Reveal stagger className="mt-12 grid border-l border-t border-ink/15 sm:mt-16 sm:grid-cols-2 lg:grid-cols-4 rounded-2xl overflow-hidden shadow-2xl backdrop-blur-sm" amount={0.05}>
           {whyUs.map((item, i) => {
             const Icon = ICONS[item.id] ?? Sparkles;
             return (
               <RevealItem key={item.id} className="h-full">
-                <div className="group relative h-full overflow-hidden border-b border-r border-ink/15 bg-white/88 p-6 transition-all duration-500 hover:bg-white sm:p-7 backdrop-blur-md">
+                <div className="group relative h-full overflow-hidden border-b border-r border-ink/15 bg-white/88 p-5 sm:p-7 transition-all duration-500 hover:bg-white backdrop-blur-md">
                   {/* gradient sweep */}
                   <span
                     aria-hidden="true"

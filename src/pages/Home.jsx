@@ -7,6 +7,7 @@ import Technology from '../sections/Technology';
 import Process from '../sections/Process';
 import Solutions from '../sections/Solutions';
 import Testimonials from '../sections/Testimonials';
+import SecurityServices from '../sections/SecurityServices';
 import BigCTA from '../sections/BigCTA';
 import Contact from '../sections/Contact';
 
@@ -26,6 +27,7 @@ export default function Home() {
       <Process />
       <Solutions />
       <Testimonials />
+      <SecurityServices />
       <BigCTA />
       <Contact />
     </main>

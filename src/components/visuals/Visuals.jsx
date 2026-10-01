@@ -251,7 +251,7 @@ function AnalyticsBody({ accent }) {
 export function PhoneMockup({ className = '', accent = VIOLET, image, imgAlt = 'Mobile app preview', aspectRatio, imgClassName = '' }) {
   return (
     <div
-      className={`relative w-[170px] sm:w-[200px] md:w-[214px] rounded-[2.2rem] border border-white/15 bg-navy-950 p-2 sm:p-2.5 shadow-[0_40px_80px_-40px_rgba(5,9,28,0.95)] ring-1 ring-white/10 ${className}`}
+      className={`relative w-[130px] min-[400px]:w-[170px] sm:w-[200px] md:w-[214px] rounded-[1.8rem] sm:rounded-[2.2rem] border border-white/15 bg-navy-950 p-1.5 sm:p-2.5 shadow-[0_40px_80px_-40px_rgba(5,9,28,0.95)] ring-1 ring-white/10 ${className}`}
     >
       {/* speaker / dynamic island notch */}
       <div className="absolute left-1/2 top-2.5 sm:top-3 h-1.5 w-12 sm:w-14 -translate-x-1/2 rounded-full bg-white/25 z-20" />

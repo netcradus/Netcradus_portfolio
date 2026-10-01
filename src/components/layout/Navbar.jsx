@@ -233,7 +233,7 @@ function MobileMenu({ open, onClose, goTo, active }) {
             </button>
           </div>
 
-          <nav className="relative flex flex-1 flex-col justify-center overflow-y-auto px-5 pb-10" aria-label="Mobile">
+          <nav className="relative flex flex-1 flex-col justify-start sm:justify-center overflow-y-auto px-5 py-6 pb-12" aria-label="Mobile">
             <ul className="flex flex-col gap-1">
               {NAV.map((item, i) => (
                 <motion.li
@@ -245,7 +245,7 @@ function MobileMenu({ open, onClose, goTo, active }) {
                   <a
                     href={item.href}
                     onClick={(e) => goTo(e, item.href)}
-                    className={`group flex items-center justify-between border-b border-white/8 py-4 font-display text-[clamp(1.9rem,9vw,3rem)] font-bold leading-none tracking-[-0.03em] transition-colors ${active === item.id ? 'text-cyan-300' : 'text-white hover:text-violet-400'
+                    className={`group flex items-center justify-between border-b border-white/8 py-3.5 sm:py-4 font-display text-[clamp(1.4rem,7vw,2.5rem)] font-bold leading-none tracking-[-0.03em] transition-colors ${active === item.id ? 'text-cyan-300' : 'text-white hover:text-violet-400'
                       }`}
                   >
                     <span className="flex items-baseline gap-4">

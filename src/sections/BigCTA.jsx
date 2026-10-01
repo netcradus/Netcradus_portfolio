@@ -16,7 +16,7 @@ export default function BigCTA() {
     <section
       id="cta"
       ref={ref}
-      className="relative isolate overflow-hidden bg-navy-950 py-20 text-white sm:py-28 lg:py-32 min-h-[480px] sm:min-h-[560px] lg:min-h-[620px] flex items-center"
+      className="relative isolate overflow-hidden bg-navy-950 py-16 text-white sm:py-24 lg:py-32 min-h-[420px] sm:min-h-[520px] lg:min-h-[620px] flex items-center"
       aria-labelledby="cta-title"
     >
       {/* background image */}
@@ -34,7 +34,7 @@ export default function BigCTA() {
         <div className="max-w-2xl">
           <h2
             id="cta-title"
-            className="font-display text-[clamp(2.4rem,6.8vw,5.5rem)] font-bold uppercase leading-[0.92] tracking-[-0.04em] text-white"
+            className="font-display text-[clamp(1.95rem,6.4vw,5.5rem)] font-bold uppercase leading-[0.92] tracking-[-0.04em] text-white"
             aria-label="Have an idea? Let's build something great."
           >
             {[
@@ -74,11 +74,11 @@ export default function BigCTA() {
           <Reveal delay={0.35} className="mt-8 sm:mt-10">
             <a
               href="#contact"
-              className="group inline-flex items-center gap-3.5 rounded-full bg-white px-7 py-3.5 font-display text-sm sm:text-base font-bold uppercase tracking-[0.06em] text-navy-950 shadow-xl transition-all duration-300 hover:shadow-[0_20px_45px_-15px_rgba(255,255,255,0.6)] hover:scale-[1.02]"
+              className="group inline-flex items-center gap-3 rounded-full bg-white px-6 py-3 sm:px-7 sm:py-3.5 font-display text-sm sm:text-base font-bold uppercase tracking-[0.06em] text-navy-950 shadow-xl transition-all duration-300 hover:shadow-[0_20px_45px_-15px_rgba(255,255,255,0.6)] hover:scale-[1.02]"
             >
               Start a Project
-              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-navy-950 text-white transition-transform duration-300 group-hover:translate-x-1">
-                <ArrowRight className="h-4 w-4" strokeWidth={2.8} aria-hidden="true" />
+              <span className="flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-full bg-navy-950 text-white transition-transform duration-300 group-hover:translate-x-1">
+                <ArrowRight className="h-3.5 w-3.5 sm:h-4 sm:w-4" strokeWidth={2.8} aria-hidden="true" />
               </span>
             </a>
           </Reveal>

@@ -56,7 +56,7 @@ export default function Services() {
   return (
     <section
       id="services"
-      className="relative overflow-hidden bg-navy-950 py-24 text-white sm:py-32 lg:py-40"
+      className="relative overflow-hidden bg-navy-950 py-16 text-white sm:py-24 lg:py-32"
       aria-labelledby="services-title"
     >
       {/* Background Image: bg3.png */}
@@ -121,7 +121,7 @@ export default function Services() {
                 <a
                   href={`#${service.id}`}
                   onClick={(e) => openServiceModal(e, service.id)}
-                  className="relative flex flex-col gap-5 py-8 outline-none transition-[padding] duration-500 sm:py-10 lg:flex-row lg:items-center lg:gap-10 lg:group-hover:pl-4 cursor-pointer"
+                  className="relative flex flex-col gap-4 sm:gap-5 py-6 sm:py-8 lg:py-10 outline-none transition-[padding] duration-500 lg:flex-row lg:items-center lg:gap-10 lg:group-hover:pl-4 cursor-pointer"
                   aria-label={`${service.title} — view project showcase & details`}
                 >
                   {/* index */}
@@ -130,7 +130,7 @@ export default function Services() {
                   </span>
 
                   {/* title */}
-                  <h3 className="font-display text-[clamp(1.7rem,5vw,3.4rem)] font-bold uppercase leading-[0.95] tracking-[-0.04em] text-white transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] lg:w-[9.5em] lg:group-hover:translate-x-1">
+                  <h3 className="font-display text-[clamp(1.5rem,4.5vw,3.4rem)] font-bold uppercase leading-[0.95] tracking-[-0.04em] text-white transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] lg:w-[9.5em] lg:group-hover:translate-x-1">
                     {service.title}
                   </h3>
 

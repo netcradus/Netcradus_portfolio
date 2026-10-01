@@ -23,7 +23,7 @@ export default function Technology() {
   return (
     <section
       id="technology"
-      className="relative isolate overflow-hidden bg-navy-950 py-24 text-white sm:py-32 lg:py-36 min-h-[640px] flex flex-col justify-center"
+      className="relative isolate overflow-hidden bg-navy-950 py-16 text-white sm:py-24 lg:py-32 min-h-[520px] sm:min-h-[600px] flex flex-col justify-center"
       aria-labelledby="tech-title"
     >
       {/* Background robo.jpg */}
@@ -57,7 +57,7 @@ export default function Technology() {
         </div>
 
         {/* Tech rows with left-to-right sliding animation */}
-        <div className="relative mt-12 flex flex-col gap-4 sm:mt-16 sm:gap-5 lg:max-w-[65%]">
+        <div className="relative mt-10 sm:mt-14 flex flex-col gap-3.5 sm:gap-5 w-full lg:max-w-[65%]">
           {techGroups.map((group, i) => {
             // Repeat items to ensure seamless infinite looping marquee
             const repeatedItems = [...group.items, ...group.items, ...group.items, ...group.items];

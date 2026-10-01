@@ -53,6 +53,7 @@ export const siteConfig = {
     { id: 'solutions', label: 'Solutions', href: '#solutions' },
     { id: 'work', label: 'Work', href: '#work' },
     { id: 'process', label: 'Process', href: '#process' },
+    { id: 'security-services', label: 'Security Services', href: '#security-services' },
     { id: 'contact', label: 'Contact', href: '#contact' },
   ],
 };

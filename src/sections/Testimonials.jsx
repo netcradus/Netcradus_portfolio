@@ -8,6 +8,7 @@ import { EASE } from '../lib/animation';
 import netLogo from '../assets/net.png';
 import aauraaLogo from '../assets/aauraa.png';
 import ayurvedaLogo from '../assets/ayurveda.png';
+import whatVideo from '../assets/whatv.mp4';
 
 const testimonialLogos = {
   't-1': netLogo,
@@ -54,16 +55,32 @@ export default function Testimonials() {
   return (
     <section
       id="testimonials"
-      className="relative overflow-hidden bg-surface py-24 sm:py-32 lg:py-36"
+      className="relative isolate overflow-hidden bg-surface py-16 sm:py-24 lg:py-32"
       aria-labelledby="testimonials-title"
     >
-      <div className="container-page">
+      {/* ---------- background video layer ---------- */}
+      <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
+        <video
+          src={whatVideo}
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          className="h-full w-full object-cover object-center"
+        />
+        {/* Subtle gradient edges for seamless section transitions without washing out the video */}
+        <div className="absolute inset-0 bg-gradient-to-b from-surface/30 via-transparent to-surface/40 pointer-events-none" />
+      </div>
+
+      <div className="container-page relative z-10">
         <div className="flex flex-col gap-7 md:flex-row md:items-end md:justify-between">
           <SectionHeading
             id="testimonials-title"
             eyebrow="Testimonials"
             lines={['WHAT CLIENTS SAY']}
-            className="max-w-2xl"
+            theme="dark"
+            className="max-w-2xl [&_.eyebrow]:text-white"
           />
 
           {/* controls */}
@@ -72,25 +89,25 @@ export default function Testimonials() {
               type="button"
               onClick={() => go(-1)}
               aria-label="Previous testimonial"
-              className="flex h-12 w-12 items-center justify-center rounded-full border border-ink/15 bg-white text-ink transition-all duration-300 hover:border-transparent hover:bg-brand-gradient hover:text-white"
+              className="flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-full border border-white/20 bg-white/15 backdrop-blur-md text-white transition-all duration-300 hover:border-transparent hover:bg-brand-gradient hover:text-white cursor-pointer shadow-sm"
             >
-              <ArrowLeft className="h-5 w-5" aria-hidden="true" />
+              <ArrowLeft className="h-4.5 w-4.5 sm:h-5 sm:w-5" aria-hidden="true" />
             </button>
             <button
               type="button"
               onClick={() => go(1)}
               aria-label="Next testimonial"
-              className="flex h-12 w-12 items-center justify-center rounded-full border border-ink/15 bg-white text-ink transition-all duration-300 hover:border-transparent hover:bg-brand-gradient hover:text-white"
+              className="flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-full border border-white/20 bg-white/15 backdrop-blur-md text-white transition-all duration-300 hover:border-transparent hover:bg-brand-gradient hover:text-white cursor-pointer shadow-sm"
             >
-              <ArrowRight className="h-5 w-5" aria-hidden="true" />
+              <ArrowRight className="h-4.5 w-4.5 sm:h-5 sm:w-5" aria-hidden="true" />
             </button>
           </Reveal>
         </div>
 
         {/* slide */}
-        <Reveal delay={0.1} className="mt-12 sm:mt-16">
+        <Reveal delay={0.1} className="mt-10 sm:mt-16">
           <div
-            className="relative overflow-hidden rounded-[1.75rem] border border-ink/10 bg-white p-7 shadow-[0_40px_90px_-60px_rgba(10,16,46,0.6)] sm:rounded-[2.5rem] sm:p-12 lg:p-16"
+            className="relative overflow-hidden rounded-[1.75rem] border border-ink/10 bg-white/92 backdrop-blur-xl p-5 sm:p-10 lg:p-16 shadow-[0_40px_90px_-60px_rgba(10,16,46,0.6)] sm:rounded-[2.5rem]"
             role="region"
             aria-roledescription="carousel"
             aria-label="Client testimonials"
@@ -115,19 +132,19 @@ export default function Testimonials() {
                 transition={{ duration: reduced ? 0 : 0.55, ease: EASE }}
                 className="relative"
               >
-                <div className="mb-6 flex items-center justify-between gap-4">
+                <div className="mb-5 sm:mb-6 flex items-center justify-between gap-4">
                   <span
-                    className={`inline-flex items-center gap-2 rounded-full border px-3.5 py-1.5 text-[0.64rem] font-bold uppercase tracking-[0.18em] ${current.isPlaceholder
+                    className={`inline-flex items-center gap-2 rounded-full border px-3 sm:px-3.5 py-1 sm:py-1.5 text-[0.62rem] sm:text-[0.64rem] font-bold uppercase tracking-[0.18em] ${current.isPlaceholder
                         ? 'border-violet-500/30 bg-violet-500/10 text-violet-600'
                         : 'border-brand-orange/30 bg-brand-orange/10 text-brand-orange'
                       }`}
                   >
                     {current.isPlaceholder ? 'Placeholder testimonial' : 'Client Review'}
                   </span>
-                  <Quote className="h-9 w-9 text-royal-600/25 sm:h-12 sm:w-12" aria-hidden="true" />
+                  <Quote className="h-8 w-8 text-royal-600/25 sm:h-12 sm:w-12" aria-hidden="true" />
                 </div>
 
-                <p className="font-display text-[clamp(1.2rem,2.6vw,2.1rem)] font-medium leading-[1.35] tracking-[-0.02em] text-ink">
+                <p className="font-display text-[clamp(1.1rem,2.4vw,2.1rem)] font-medium leading-[1.35] tracking-[-0.02em] text-ink">
                   “{current.quote}”
                 </p>
 

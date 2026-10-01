@@ -96,7 +96,7 @@ export default function AppDevShowcaseModal() {
       const detail = e?.detail;
       if (detail === 'app-development' || detail?.serviceId === 'app-development') {
         setActiveScreenIndex(0);
-        setViewMode('3d-floating');
+        setViewMode(window.innerWidth < 768 ? 'focused' : '3d-floating');
         setOpen(true);
       }
     };
@@ -221,7 +221,7 @@ export default function AppDevShowcaseModal() {
               ref={containerRef}
               onMouseMove={handleMouseMove}
               onMouseLeave={handleMouseLeave}
-              className="relative flex-1 min-h-0 overflow-hidden flex items-center justify-center p-4 sm:p-8 select-none bg-gradient-to-b from-slate-50/80 via-white to-slate-100/70"
+              className="relative flex-1 min-h-0 overflow-y-auto overflow-x-hidden flex items-center justify-center p-4 sm:p-8 select-none bg-gradient-to-b from-slate-50/80 via-white to-slate-100/70"
             >
               {/* Subtle Ambient Radial Glows */}
               <div
@@ -319,16 +319,16 @@ export default function AppDevShowcaseModal() {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ duration: 0.35, ease: EASE }}
-                  className="w-full max-w-5xl grid lg:grid-cols-[1fr_1.1fr] gap-8 items-center"
+                  className="w-full max-w-5xl grid lg:grid-cols-[1fr_1.1fr] gap-6 sm:gap-8 items-center py-3 sm:py-0"
                 >
                   {/* Left: Interactive Phone Viewer */}
                   <div className="flex flex-col items-center justify-center">
                     <motion.div
                       animate={{ y: [0, -10, 0] }}
                       transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut' }}
-                      className="relative w-[250px] sm:w-[280px] rounded-[2.6rem] p-2.5 bg-[#0c101d] border-[3px] border-[#ff5500]/60 shadow-[0_30px_90px_rgba(255,85,0,0.25)]"
+                      className="relative w-[210px] sm:w-[280px] rounded-[2.2rem] sm:rounded-[2.6rem] p-2 sm:p-2.5 bg-[#0c101d] border-[3px] border-[#ff5500]/60 shadow-[0_30px_90px_rgba(255,85,0,0.25)]"
                     >
-                      <div className="relative overflow-hidden rounded-[2.2rem] bg-white aspect-[375/665] w-full">
+                      <div className="relative overflow-hidden rounded-[1.8rem] sm:rounded-[2.2rem] bg-white aspect-[375/665] w-full">
                         <AnimatePresence mode="wait">
                           <motion.img
                             key={currentScreen.id}

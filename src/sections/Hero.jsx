@@ -126,7 +126,7 @@ export default function Hero() {
 
             <h1
               id="hero-title"
-              className="font-display text-[clamp(2.4rem,6.2vw,5rem)] font-bold uppercase leading-[0.94] tracking-[-0.045em] text-ink"
+              className="font-display text-[clamp(2.05rem,5.8vw,5rem)] font-bold uppercase leading-[0.94] tracking-[-0.045em] text-ink"
               aria-label={hero.headlineLines.map((l) => l.text).join(' ')}
             >
               {hero.headlineLines.map((line, i) => (
@@ -167,7 +167,7 @@ export default function Hero() {
             </h1>
 
             <motion.p
-              className="mt-7 max-w-2xl text-[1.02rem] leading-relaxed text-muted sm:text-lg"
+              className="mt-6 sm:mt-7 max-w-2xl text-[1rem] leading-relaxed text-muted sm:text-lg"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease: EASE, delay: reduced ? 0 : 0.75 }}
@@ -176,7 +176,7 @@ export default function Hero() {
             </motion.p>
 
             <motion.div
-              className="mt-9 flex flex-wrap items-center gap-3 sm:gap-4"
+              className="mt-8 sm:mt-9 flex flex-wrap items-center gap-3 sm:gap-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease: EASE, delay: reduced ? 0 : 0.9 }}
@@ -191,7 +191,7 @@ export default function Hero() {
 
             {/* capability ticker inside hero */}
             <motion.div
-              className="mt-12 max-w-xl"
+              className="mt-10 sm:mt-12 max-w-xl"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: reduced ? 0 : 1.15 }}
@@ -225,7 +225,7 @@ export default function Hero() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, ease: EASE, delay: reduced ? 0 : 0.5 }}
           >
-            <div className="relative aspect-[4/3.1] w-full min-h-[340px] sm:min-h-[400px]">
+            <div className="relative aspect-[4/3.1] w-full min-h-[280px] min-[400px]:min-h-[340px] sm:min-h-[400px]">
               {/* main dashboard / tab */}
               <motion.div
                 className="absolute left-0 top-2 w-[88%] sm:w-[86%]"
@@ -236,7 +236,7 @@ export default function Hero() {
 
               {/* phone / mobile */}
               <motion.div
-                className="absolute -bottom-6 right-0 sm:-bottom-8 sm:-right-2 z-20"
+                className="absolute -bottom-4 right-0 min-[400px]:-bottom-6 sm:-bottom-8 sm:-right-2 z-20"
                 style={reduced ? undefined : { x: frontX, y: frontY }}
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -247,7 +247,7 @@ export default function Hero() {
 
               {/* floating chips */}
               <motion.div
-                className="absolute -left-2 bottom-2 sm:-left-6 sm:bottom-4 z-20"
+                className="absolute left-0 bottom-1 min-[400px]:-left-2 min-[400px]:bottom-2 sm:-left-6 sm:bottom-4 z-20"
                 initial={{ opacity: 0, x: -24 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.7, ease: EASE, delay: reduced ? 0 : 1.15 }}
@@ -256,7 +256,7 @@ export default function Hero() {
               </motion.div>
 
               <motion.div
-                className="absolute right-[12%] -top-3 sm:-top-5 z-20"
+                className="absolute right-[6%] -top-2 min-[400px]:right-[12%] min-[400px]:-top-3 sm:-top-5 z-20"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, ease: EASE, delay: reduced ? 0 : 1.3 }}
