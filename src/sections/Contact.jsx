@@ -190,7 +190,7 @@ export default function Contact() {
         placeholder: false,
       },
       { icon: Clock, label: 'Response time', value: 'Within 24 hours', placeholder: false },
-      { icon: MapPin, label: 'Locations', value: 'Office address placeholder', placeholder: true },
+      { icon: MapPin, label: 'Locations', value: 'Noida, Uttar Pradesh, India', placeholder: false },
     ],
     []
   );

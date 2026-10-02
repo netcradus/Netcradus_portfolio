@@ -33,12 +33,8 @@ export default function Work() {
             className="max-w-3xl"
           />
           <Reveal delay={0.15} className="max-w-md">
-            <p className="text-sm leading-relaxed text-muted sm:text-base">
+          <p className="text-sm leading-relaxed text-muted sm:text-base">
               A sample of the platforms we design and engineer.
-              <span className="mt-2 block text-xs uppercase tracking-[0.16em] text-muted/70">
-                ⚠ All projects below are placeholders — replace in{' '}
-                <code className="rounded bg-ink/5 px-1.5 py-0.5">src/data/site.js</code>
-              </span>
             </p>
           </Reveal>
         </div>
