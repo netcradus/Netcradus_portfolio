@@ -3,7 +3,7 @@ import { siteConfig } from '../../data/config';
 import { services } from '../../data/site';
 import Reveal from '../ui/Reveal';
 import logoImg from '../../assets/cyberhaxs-logo.png';
-import downloadBgImg from '../../assets/download.jpg';
+import footerBgImg from '../../assets/footer-bg.jpg';
 
 const COMPANY_LINKS = [
   { label: 'About', href: '#about' },
@@ -23,17 +23,26 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="relative overflow-hidden bg-[#0d1520] text-white">
+    <footer className="relative overflow-hidden bg-[#070d14] text-white">
       {/* ---------------- Background Image ---------------- */}
-      <div className="pointer-events-none absolute inset-0 z-0">
-        <img
-          src={downloadBgImg}
-          alt=""
-          className="h-full w-full object-cover object-center select-none"
-        />
-        {/* Subtle gradient overlay to enhance readability on the left while preserving globe visual on the right */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0a111a]/95 via-[#0a111a]/80 to-[#0a111a]/40" />
-        <div className="absolute inset-0 bg-black/20" />
+      <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
+        {/* Right-aligned HD globe visual scaled to fit vertically without clipping */}
+        <div className="absolute -right-6 sm:right-0 top-0 bottom-0 h-full w-full max-w-[800px] xl:max-w-[920px] flex items-center justify-end">
+          <img
+            src={footerBgImg}
+            alt=""
+            className="h-full w-auto max-w-none object-contain object-right select-none brightness-100 contrast-105"
+            style={{
+              maskImage: 'linear-gradient(to right, transparent 0%, rgba(0,0,0,0.4) 15%, black 45%)',
+              WebkitMaskImage: 'linear-gradient(to right, transparent 0%, rgba(0,0,0,0.4) 15%, black 45%)',
+            }}
+          />
+        </div>
+
+        {/* Seamless ambient gradient overlays for readability and smooth edge transitions */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#070d14] via-[#070d14]/75 to-transparent pointer-events-none" />
+        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#070d14] to-transparent pointer-events-none" />
+        <div className="absolute inset-x-0 top-0 h-16 bg-gradient-to-b from-[#070d14]/60 to-transparent pointer-events-none" />
       </div>
 
       <div className="container-page relative z-10 pb-10 pt-12 sm:pt-16">

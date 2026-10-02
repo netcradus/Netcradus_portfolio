@@ -19,17 +19,15 @@ import { BrowserMockup } from '../visuals/Visuals';
 // Project image assets
 import web1Img from '../../assets/web1.png';
 import tech2Img from '../../assets/robo.jpg';
-import buildImg from '../../assets/build.png';
 import crm2Img from '../../assets/crm2 (2).png';
 
 // Brand Logo Assets
 import netLogo from '../../assets/net.png';
 import aauraaLogo from '../../assets/aauraa.png';
-import vastralaneLogo from '../../assets/vastralane.png';
 import ayurvedaLogo from '../../assets/ayurveda.png';
 
 /* -------------------------------------------------------------------------- */
-/*  4 FEATURED WEB PROJECTS WITH CUSTOM BRAND LOGOS                           */
+/*  3 FEATURED WEB PROJECTS WITH CUSTOM BRAND LOGOS                           */
 /* -------------------------------------------------------------------------- */
 
 const PROJECTS = [
@@ -82,32 +80,8 @@ const PROJECTS = [
     ],
   },
   {
-    id: 'vastraalane',
-    index: '03',
-    title: 'VASTRAALANE',
-    subtitle: 'Haute Couture Digital Commerce & Luxury Retail Portal',
-    category: 'E-Commerce Ecosystem',
-    logoImg: vastralaneLogo,
-    liveUrl: 'https://vastraalane.com/',
-    image: buildImg,
-    accent: '#ffaa2b',
-    description:
-      'Headless digital commerce architecture integrating dynamic catalogue rendering, global multi-currency checkout, automated inventory sync, and sub-second curated product recommendation search.',
-    techStack: ['Next.js', 'GraphQL', 'Stripe / Razorpay', 'ElasticSearch', 'Redis', 'Tailwind CSS', 'AWS S3'],
-    metrics: [
-      { label: 'Checkout Lift', value: '+42%' },
-      { label: 'Sync Accuracy', value: '99.9%' },
-      { label: 'Edge Nodes', value: 'Global CDN' },
-    ],
-    deliverables: [
-      'Sub-50ms fuzzy search with auto-complete and luxury faceted attribute filtering',
-      'Headless checkout flow with localized currencies and automated tax computation',
-      'Omnichannel inventory sync across fashion warehouses and digital storefronts',
-    ],
-  },
-  {
     id: 'well-ayurveda',
-    index: '04',
+    index: '03',
     title: 'WELL AYURVEDA',
     subtitle: 'Natural, Pure & Holistic Healthcare Platform & Store',
     category: 'Holistic Wellness Ecosystem',
@@ -248,7 +222,7 @@ export default function WebDevShowcaseModal() {
             <div className="flex-1 min-h-0 overflow-y-auto p-5 sm:p-8 lg:p-10 flex flex-col justify-center bg-white">
               <AnimatePresence mode="wait">
                 {!selectedProject ? (
-                  /* ---------------- 4-CARD SHOWCASE GRID MATCHING THE USER'S IMAGE ---------------- */
+                  /* ---------------- 3-CARD SHOWCASE GRID ---------------- */
                   <motion.div
                     key="grid"
                     initial={{ opacity: 0, y: 16 }}
@@ -257,7 +231,7 @@ export default function WebDevShowcaseModal() {
                     transition={{ duration: 0.35, ease: EASE }}
                     className="relative w-full"
                   >
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 max-w-5xl mx-auto w-full">
                       {PROJECTS.map((project) => (
                         <motion.a
                           key={project.id}
@@ -287,9 +261,7 @@ export default function WebDevShowcaseModal() {
                             <img
                               src={project.logoImg}
                               alt={`${project.title} logo`}
-                              className={`max-h-20 sm:max-h-24 max-w-[90%] object-contain drop-shadow-[0_8px_20px_rgba(0,0,0,0.6)] ${
-                                project.id === 'vastraalane' ? 'rounded-full' : ''
-                              }`}
+                              className="max-h-20 sm:max-h-24 max-w-[90%] object-contain drop-shadow-[0_8px_20px_rgba(0,0,0,0.6)]"
                             />
                           </div>
 
@@ -335,7 +307,7 @@ export default function WebDevShowcaseModal() {
                         <div className="space-y-4">
                           <div className="flex items-center gap-3">
                             <span className="font-mono text-xs font-bold tracking-widest text-[#ff5500]">
-                              PROJECT {selectedProject.index} / 04
+                              PROJECT {selectedProject.index} / 03
                             </span>
                             <span className="h-1 w-1 rounded-full bg-slate-300" />
                             <span className="text-xs uppercase tracking-wider text-slate-500 font-semibold">
@@ -354,9 +326,7 @@ export default function WebDevShowcaseModal() {
                               <img
                                 src={selectedProject.logoImg}
                                 alt={`${selectedProject.title} logo`}
-                                className={`max-h-full max-w-full object-contain ${
-                                  selectedProject.id === 'vastraalane' ? 'rounded-full' : ''
-                                }`}
+                                className="max-h-full max-w-full object-contain"
                               />
                             </a>
                             <div>
