@@ -32,11 +32,11 @@ export default function WhyUs() {
   return (
     <section id="why" className="relative isolate overflow-hidden bg-white py-16 sm:py-24 lg:py-32" aria-labelledby="why-title">
       {/* 3D Question Mark Graphic on Top-Right — sharp & unblurred */}
-      <div className="pointer-events-none absolute right-2 sm:right-8 md:right-14 lg:right-20 top-4 sm:top-8 lg:top-10 z-0">
+      <div className="pointer-events-none absolute right-2 sm:right-8 md:right-14 lg:right-20 top-2 sm:top-8 lg:top-10 z-0">
         <img
           src={whyUsQuestionImg}
           alt="Why CyberHaxs"
-          className="h-28 sm:h-48 md:h-64 lg:h-80 w-auto object-contain select-none opacity-40 sm:opacity-100"
+          className="h-20 min-[380px]:h-28 sm:h-48 md:h-64 lg:h-80 w-auto object-contain select-none opacity-20 sm:opacity-100"
         />
       </div>
 

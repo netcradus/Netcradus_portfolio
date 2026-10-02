@@ -107,7 +107,7 @@ export default function SecurityServices() {
           <div className="grid items-center gap-8 lg:grid-cols-[1.1fr_1.4fr_1.1fr] xl:gap-10">
             
             {/* Left Column (4 Services) */}
-            <div className="flex flex-col gap-5 sm:gap-6">
+            <div className="flex flex-col gap-4 sm:gap-6">
               {leftServices.map((service, index) => {
                 const isSelected = activeId === service.id;
                 const isOrange = service.accent === 'orange';
@@ -119,7 +119,7 @@ export default function SecurityServices() {
                       type="button"
                       onClick={() => setActiveId(service.id)}
                       onMouseEnter={() => setActiveId(service.id)}
-                      className={`group relative flex w-full items-start gap-4 rounded-2xl border p-4 sm:p-5 text-left transition-all duration-300 cursor-pointer ${
+                      className={`group relative flex w-full items-start gap-3 sm:gap-4 rounded-2xl border p-3.5 sm:p-5 text-left transition-all duration-300 cursor-pointer ${
                         isSelected
                           ? isOrange
                             ? 'border-[#ff5500]/70 bg-gradient-to-r from-[#ff5500]/15 to-transparent shadow-[0_0_25px_rgba(255,85,0,0.22)]'
@@ -130,13 +130,13 @@ export default function SecurityServices() {
                       {/* Hexagonal Cyber Icon Badge */}
                       <div className="relative flex-none">
                         <div
-                          className={`relative flex h-14 w-14 items-center justify-center rounded-2xl transition-all duration-300 ${
+                          className={`relative flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-2xl transition-all duration-300 ${
                             isOrange
                               ? 'border-2 border-[#ff5500]/50 bg-gradient-to-br from-[#ff5500]/30 via-black/80 to-black text-[#ff8843] shadow-[0_0_18px_rgba(255,85,0,0.35)] group-hover:border-[#ff5500]'
                               : 'border-2 border-cyan-400/50 bg-gradient-to-br from-cyan-500/30 via-black/80 to-black text-cyan-300 shadow-[0_0_18px_rgba(6,182,212,0.35)] group-hover:border-cyan-400'
                           }`}
                         >
-                          <IconComponent className="h-6 w-6 transition-transform duration-300 group-hover:scale-110" />
+                          <IconComponent className="h-5 w-5 sm:h-6 sm:w-6 transition-transform duration-300 group-hover:scale-110" />
                         </div>
 
                         {/* Connector line dot on desktop */}
@@ -155,7 +155,7 @@ export default function SecurityServices() {
                       <div className="min-w-0 flex-1">
                         <div className="flex items-center justify-between gap-2">
                           <h3
-                            className={`font-display text-base sm:text-lg font-bold tracking-tight transition-colors ${
+                            className={`font-display text-sm sm:text-lg font-bold tracking-tight transition-colors ${
                               isSelected
                                 ? isOrange
                                   ? 'text-[#ffaa75]'
@@ -178,7 +178,7 @@ export default function SecurityServices() {
 
             {/* Center Column: 3D Isometric Cyber Platform Core */}
             <Reveal delay={0.2} className="relative flex flex-col items-center justify-center">
-              <div className="relative w-full overflow-hidden rounded-3xl border border-cyan-500/30 bg-gradient-to-b from-[#0e1628]/95 via-[#090e1c]/95 to-[#060a14] p-4 sm:p-6 shadow-[0_0_60px_rgba(6,182,212,0.18)] backdrop-blur-2xl">
+              <div className="relative w-full overflow-hidden rounded-3xl border border-cyan-500/30 bg-gradient-to-b from-[#0e1628]/95 via-[#090e1c]/95 to-[#060a14] p-3.5 sm:p-6 shadow-[0_0_60px_rgba(6,182,212,0.18)] backdrop-blur-2xl">
                 
                 {/* Header Status in HUD */}
                 <div className="flex items-center justify-between border-b border-white/10 pb-3 px-2">
@@ -197,7 +197,7 @@ export default function SecurityServices() {
                 </div>
 
                 {/* 3D Platform Image with Glowing Overlays */}
-                <div className="relative my-4 aspect-[16/10] w-full overflow-hidden rounded-2xl border border-cyan-500/20 bg-black/60">
+                <div className="relative my-4 aspect-[16/11] sm:aspect-[16/10] w-full overflow-hidden rounded-2xl border border-cyan-500/20 bg-black/60">
                   <img
                     src={securityPlatformImg}
                     alt="Cyber Security Architecture Platform"
@@ -209,7 +209,7 @@ export default function SecurityServices() {
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#060a14]/60 via-transparent to-[#060a14]/60" />
 
                   {/* Dynamic Floating Badge on Central Board */}
-                  <div className="absolute bottom-3 left-3 right-3 rounded-xl border border-white/15 bg-[#060a14]/90 p-3 backdrop-blur-md">
+                  <div className="absolute bottom-2 left-2 right-2 sm:bottom-3 sm:left-3 sm:right-3 rounded-xl border border-white/15 bg-[#060a14]/90 p-2.5 sm:p-3 backdrop-blur-md">
                     <div className="flex items-center justify-between gap-2">
                       <div className="flex items-center gap-2">
                         <Activity className="h-4 w-4 text-cyan-400 animate-pulse" />
@@ -217,16 +217,16 @@ export default function SecurityServices() {
                           {activeService.title}
                         </span>
                       </div>
-                      <span className="rounded-full bg-cyan-500/20 px-2 py-0.5 text-[0.65rem] font-bold text-cyan-300 border border-cyan-500/30">
+                      <span className="rounded-full bg-cyan-500/20 px-2 py-0.5 text-[0.62rem] sm:text-[0.65rem] font-bold text-cyan-300 border border-cyan-500/30">
                         {activeService.badge}
                       </span>
                     </div>
 
-                    <div className="mt-2 flex flex-wrap gap-1.5">
+                    <div className="mt-2 flex flex-wrap gap-1">
                       {activeService.features.map((feat, i) => (
                         <span
                           key={i}
-                          className="inline-flex items-center gap-1 rounded bg-white/[0.06] px-2 py-0.5 text-[0.68rem] text-white/85 border border-white/5"
+                          className="inline-flex items-center gap-1 rounded bg-white/[0.06] px-1.5 sm:px-2 py-0.5 text-[0.62rem] sm:text-[0.68rem] text-white/85 border border-white/5"
                         >
                           <CheckCircle2 className="h-2.5 w-2.5 text-emerald-400" />
                           {feat}
@@ -237,22 +237,22 @@ export default function SecurityServices() {
                 </div>
 
                 {/* Bottom Core Metrics Grid */}
-                <div className="grid grid-cols-3 gap-2 border-t border-white/10 pt-3 text-center">
-                  <div className="rounded-xl border border-white/5 bg-white/[0.02] p-2 sm:p-2.5">
-                    <p className="font-mono text-[0.68rem] text-white/50">SLA Response</p>
-                    <p className="font-display text-sm sm:text-base font-bold text-cyan-300">
+                <div className="grid grid-cols-3 gap-1.5 sm:gap-2 border-t border-white/10 pt-3 text-center">
+                  <div className="rounded-xl border border-white/5 bg-white/[0.02] p-1.5 sm:p-2.5">
+                    <p className="font-mono text-[0.6rem] sm:text-[0.68rem] text-white/50">SLA Response</p>
+                    <p className="font-display text-xs sm:text-base font-bold text-cyan-300">
                       &lt; 15 Mins
                     </p>
                   </div>
-                  <div className="rounded-xl border border-white/5 bg-white/[0.02] p-2 sm:p-2.5">
-                    <p className="font-mono text-[0.68rem] text-white/50">SOC Coverage</p>
-                    <p className="font-display text-sm sm:text-base font-bold text-[#ff8843]">
+                  <div className="rounded-xl border border-white/5 bg-white/[0.02] p-1.5 sm:p-2.5">
+                    <p className="font-mono text-[0.6rem] sm:text-[0.68rem] text-white/50">SOC Coverage</p>
+                    <p className="font-display text-xs sm:text-base font-bold text-[#ff8843]">
                       24×7×365
                     </p>
                   </div>
-                  <div className="rounded-xl border border-white/5 bg-white/[0.02] p-2 sm:p-2.5">
-                    <p className="font-mono text-[0.68rem] text-white/50">Architecture</p>
-                    <p className="font-display text-sm sm:text-base font-bold text-emerald-400">
+                  <div className="rounded-xl border border-white/5 bg-white/[0.02] p-1.5 sm:p-2.5">
+                    <p className="font-mono text-[0.6rem] sm:text-[0.68rem] text-white/50">Architecture</p>
+                    <p className="font-display text-xs sm:text-base font-bold text-emerald-400">
                       Zero Trust
                     </p>
                   </div>
@@ -262,7 +262,7 @@ export default function SecurityServices() {
             </Reveal>
 
             {/* Right Column (4 Services) */}
-            <div className="flex flex-col gap-5 sm:gap-6">
+            <div className="flex flex-col gap-4 sm:gap-6">
               {rightServices.map((service, index) => {
                 const isSelected = activeId === service.id;
                 const isOrange = service.accent === 'orange';
@@ -274,7 +274,7 @@ export default function SecurityServices() {
                       type="button"
                       onClick={() => setActiveId(service.id)}
                       onMouseEnter={() => setActiveId(service.id)}
-                      className={`group relative flex w-full items-start gap-4 rounded-2xl border p-4 sm:p-5 text-left transition-all duration-300 cursor-pointer ${
+                      className={`group relative flex w-full items-start gap-3 sm:gap-4 rounded-2xl border p-3.5 sm:p-5 text-left transition-all duration-300 cursor-pointer ${
                         isSelected
                           ? isOrange
                             ? 'border-[#ff5500]/70 bg-gradient-to-l from-[#ff5500]/15 to-transparent shadow-[0_0_25px_rgba(255,85,0,0.22)]'
@@ -296,13 +296,13 @@ export default function SecurityServices() {
                         />
 
                         <div
-                          className={`relative flex h-14 w-14 items-center justify-center rounded-2xl transition-all duration-300 ${
+                          className={`relative flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-2xl transition-all duration-300 ${
                             isOrange
                               ? 'border-2 border-[#ff5500]/50 bg-gradient-to-br from-[#ff5500]/30 via-black/80 to-black text-[#ff8843] shadow-[0_0_18px_rgba(255,85,0,0.35)] group-hover:border-[#ff5500]'
                               : 'border-2 border-cyan-400/50 bg-gradient-to-br from-cyan-500/30 via-black/80 to-black text-cyan-300 shadow-[0_0_18px_rgba(6,182,212,0.35)] group-hover:border-cyan-400'
                           }`}
                         >
-                          <IconComponent className="h-6 w-6 transition-transform duration-300 group-hover:scale-110" />
+                          <IconComponent className="h-5 w-5 sm:h-6 sm:w-6 transition-transform duration-300 group-hover:scale-110" />
                         </div>
                       </div>
 
@@ -310,7 +310,7 @@ export default function SecurityServices() {
                       <div className="min-w-0 flex-1">
                         <div className="flex items-center justify-between gap-2">
                           <h3
-                            className={`font-display text-base sm:text-lg font-bold tracking-tight transition-colors ${
+                            className={`font-display text-sm sm:text-lg font-bold tracking-tight transition-colors ${
                               isSelected
                                 ? isOrange
                                   ? 'text-[#ffaa75]'

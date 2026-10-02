@@ -162,16 +162,16 @@ export default function AppDevShowcaseModal() {
             className="relative z-10 flex flex-col w-full max-w-7xl h-[92vh] max-h-[940px] overflow-hidden rounded-[2rem] sm:rounded-[2.5rem] border border-black/12 bg-white text-slate-900 shadow-[0_35px_120px_rgba(0,0,0,0.35)]"
           >
             {/* Top Navigation Header */}
-            <div className="shrink-0 flex items-center justify-between border-b border-black/10 bg-white/95 px-6 sm:px-10 py-4 sm:py-5 backdrop-blur-md">
-              <div className="flex items-center gap-3.5">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-orange-50 text-[#ff5500] border border-orange-200">
+            <div className="shrink-0 flex items-center justify-between border-b border-black/10 bg-white/95 px-4 sm:px-10 py-4 sm:py-5 backdrop-blur-md">
+              <div className="flex items-center gap-2.5 sm:gap-3.5 min-w-0">
+                <div className="flex h-9 w-9 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-xl bg-orange-50 text-[#ff5500] border border-orange-200">
                   <Smartphone className="h-5 w-5" />
                 </div>
-                <div>
-                  <h2 id="app-showcase-title" className="font-display text-base sm:text-lg font-bold text-slate-900 tracking-wide">
+                <div className="min-w-0">
+                  <h2 id="app-showcase-title" className="font-display text-sm sm:text-lg font-bold text-slate-900 tracking-wide">
                     APP DEVELOPMENT SHOWCASE
                   </h2>
-                  <p className="text-xs text-slate-500 font-mono">
+                  <p className="text-xs text-slate-500 font-mono hidden sm:block">
                     Consumer Mobility, Subscription E-Commerce & Fluid 60FPS UI
                   </p>
                 </div>

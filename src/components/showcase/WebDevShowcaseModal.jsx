@@ -180,16 +180,16 @@ export default function WebDevShowcaseModal() {
             className="relative z-10 flex flex-col w-full max-w-6xl h-[92vh] max-h-[920px] overflow-hidden rounded-[2rem] sm:rounded-[2.5rem] border border-slate-200 bg-white text-slate-900 shadow-[0_30px_100px_rgba(0,0,0,0.55)]"
           >
             {/* Top Navigation Header */}
-            <div className="shrink-0 flex items-center justify-between border-b border-slate-200/90 bg-white/95 px-6 sm:px-10 py-5 backdrop-blur-md">
-              <div className="flex items-center gap-3.5">
-                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#ff5500]/10 text-[#ff5500]">
+            <div className="shrink-0 flex items-center justify-between border-b border-slate-200/90 bg-white/95 px-4 sm:px-10 py-4 sm:py-5 backdrop-blur-md">
+              <div className="flex items-center gap-2.5 sm:gap-3.5 min-w-0">
+                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#ff5500]/10 text-[#ff5500] shrink-0">
                   <Laptop className="h-5 w-5" />
                 </div>
-                <div>
-                  <h2 id="web-showcase-title" className="font-display text-base sm:text-lg font-bold text-slate-950 tracking-wide">
+                <div className="min-w-0">
+                  <h2 id="web-showcase-title" className="font-display text-sm sm:text-lg font-bold text-slate-950 tracking-wide">
                     WEB DEVELOPMENT SHOWCASE
                   </h2>
-                  <p className="text-xs text-slate-500 font-mono">
+                  <p className="text-xs text-slate-500 font-mono hidden sm:block">
                     Featured Web Applications, SaaS Architectures & Case Studies
                   </p>
                 </div>

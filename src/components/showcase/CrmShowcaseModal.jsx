@@ -181,13 +181,13 @@ export default function CrmShowcaseModal() {
             className="relative z-10 flex flex-col w-full max-w-7xl h-[92vh] max-h-[940px] overflow-hidden rounded-[2rem] sm:rounded-[2.5rem] border border-black/12 bg-white text-slate-900 shadow-[0_35px_120px_rgba(0,0,0,0.35)]"
           >
             {/* ---------------- Top Editorial Navigation Bar ---------------- */}
-            <div className="shrink-0 flex items-center justify-between border-b border-black/10 bg-white/95 px-6 sm:px-10 py-4 sm:py-5 backdrop-blur-md">
-              <div className="flex items-center gap-4">
-                <span className="font-display font-black tracking-widest text-lg text-slate-900 uppercase">
+            <div className="shrink-0 flex items-center justify-between border-b border-black/10 bg-white/95 px-4 sm:px-10 py-3.5 sm:py-5 backdrop-blur-md">
+              <div className="flex items-center gap-2 sm:gap-4 min-w-0">
+                <span className="font-display font-black tracking-widest text-base sm:text-lg text-slate-900 uppercase shrink-0">
                   CYBERHAXS <span className="text-[#ff5500]">CRM</span>
                 </span>
                 <span className="hidden sm:inline-block h-3 w-px bg-slate-300" />
-                <span className="hidden sm:inline-block text-xs font-mono text-slate-500 uppercase tracking-widest">
+                <span className="hidden sm:inline-block text-xs font-mono text-slate-500 uppercase tracking-widest truncate">
                   Enterprise Platform Showcase
                 </span>
               </div>
@@ -286,7 +286,7 @@ export default function CrmShowcaseModal() {
               />
 
               {/* Slide Content Grid: Text on Left + Moving Images on Right */}
-              <div className="relative z-10 w-full h-full max-w-6xl grid lg:grid-cols-[1.1fr_1.6fr] gap-6 sm:gap-12 items-center py-3 sm:py-0">
+              <div className="relative z-10 w-full h-full max-w-6xl grid lg:grid-cols-[1.1fr_1.6fr] gap-4 sm:gap-12 items-center py-2 sm:py-0">
                 {/* ---------------- Left Content Column (Black / Dark Text) ---------------- */}
                 <div className="space-y-6">
                   <AnimatePresence mode="wait">
@@ -306,7 +306,7 @@ export default function CrmShowcaseModal() {
 
                       <h2
                         id="crm-showcase-title"
-                        className="font-display text-2xl sm:text-4xl lg:text-5xl font-extrabold uppercase tracking-tight text-slate-900 leading-[1.05]"
+                        className="font-display text-xl sm:text-4xl lg:text-5xl font-extrabold uppercase tracking-tight text-slate-900 leading-[1.05]"
                       >
                         {currentSlide.title}
                       </h2>

@@ -308,7 +308,7 @@ export default function DPDPPrivacyModal() {
   return (
     <AnimatePresence>
       {open && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-2 sm:p-6 overflow-y-auto">
           {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -328,19 +328,19 @@ export default function DPDPPrivacyModal() {
             role="dialog"
             aria-modal="true"
             aria-labelledby="dpdp-modal-title"
-            className="relative z-10 flex flex-col w-full max-w-4xl h-[88vh] max-h-[850px] overflow-hidden rounded-3xl border border-white/15 bg-white text-ink shadow-[0_30px_90px_-20px_rgba(0,0,0,0.7)]"
+            className="relative z-10 flex flex-col w-full max-w-4xl h-[88vh] max-h-[850px] overflow-hidden rounded-2xl sm:rounded-3xl border border-white/15 bg-white text-ink shadow-[0_30px_90px_-20px_rgba(0,0,0,0.7)]"
           >
             {/* Header */}
-            <div className="shrink-0 flex items-center justify-between border-b border-ink/10 bg-surface px-6 py-5 sm:px-8">
-              <div className="flex items-center gap-3.5">
-                <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-royal-500/10 text-royal-600 shrink-0">
-                  <ShieldCheck className="h-6 w-6" />
+            <div className="shrink-0 flex items-center justify-between border-b border-ink/10 bg-surface px-4 sm:px-8 py-3.5 sm:py-5">
+              <div className="flex items-center gap-2.5 sm:gap-3.5 min-w-0">
+                <span className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-xl bg-royal-500/10 text-royal-600 shrink-0">
+                  <ShieldCheck className="h-5 w-5 sm:h-6 sm:w-6" />
                 </span>
-                <div>
-                  <h2 id="dpdp-modal-title" className="font-display text-lg sm:text-xl font-bold text-ink">
+                <div className="min-w-0">
+                  <h2 id="dpdp-modal-title" className="font-display text-base sm:text-xl font-bold text-ink truncate sm:whitespace-normal">
                     DPDP Compliance & Privacy Center
                   </h2>
-                  <p className="text-xs text-muted font-mono">
+                  <p className="text-[0.68rem] sm:text-xs text-muted font-mono truncate sm:whitespace-normal">
                     Digital Personal Data Protection (DPDP) Act 2023 · Guidelines & Governance
                   </p>
                 </div>
@@ -350,14 +350,14 @@ export default function DPDPPrivacyModal() {
                 type="button"
                 onClick={() => setOpen(false)}
                 aria-label="Close modal"
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-ink/10 text-ink/70 hover:bg-ink/5 hover:text-ink transition-colors cursor-pointer"
+                className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-ink/10 text-ink/70 hover:bg-ink/5 hover:text-ink transition-colors cursor-pointer"
               >
                 <X className="h-5 w-5" />
               </button>
             </div>
 
             {/* Navigation Tabs - with shrink-0 and clean height */}
-            <div className="shrink-0 flex items-center border-b border-ink/10 bg-surface/80 px-6 sm:px-8 gap-1 sm:gap-2 overflow-x-auto min-h-[3.25rem]">
+            <div className="shrink-0 flex items-center border-b border-ink/10 bg-surface/80 px-3 sm:px-8 gap-1 sm:gap-2 overflow-x-auto min-h-[3.25rem]">
               {[
                 { id: 'guidelines', label: 'DPDP Principles & Policies', icon: Scale },
                 { id: 'rights', label: 'Data Rights & Requests', icon: UserCheck },

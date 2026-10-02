@@ -66,7 +66,7 @@ export default function About() {
           </div>
 
           {/* ---------------- visual ---------------- */}
-          <div className="relative min-w-0 lg:sticky lg:top-28">
+          <div className="relative min-w-0 pb-8 sm:pb-0 lg:sticky lg:top-28">
             <MediaReveal className="relative">
               <div className="relative aspect-video w-full overflow-hidden rounded-[1.5rem] sm:rounded-[2rem] bg-navy-950 border border-white/10 shadow-2xl">
                 <video
@@ -83,10 +83,10 @@ export default function About() {
 
             {/* stat callout */}
             <Reveal
-              className="absolute -bottom-5 sm:-bottom-7 left-3 sm:left-8 max-w-[13rem] sm:max-w-[15rem] rounded-2xl border border-ink/8 bg-white p-4 sm:p-5 shadow-[0_28px_60px_-30px_rgba(10,16,46,0.5)]"
+              className="absolute -bottom-3 sm:-bottom-7 left-3 sm:left-8 max-w-[13rem] sm:max-w-[15rem] rounded-2xl border border-ink/8 bg-white p-4 sm:p-5 shadow-[0_28px_60px_-30px_rgba(10,16,46,0.5)]"
               delay={0.35}
             >
-              <p className="font-display text-lg sm:text-xl font-bold tracking-tight text-ink">
+              <p className="font-display text-base sm:text-xl font-bold tracking-tight text-ink">
                 From Idea to Scale
               </p>
               <p className="mt-1 text-xs sm:text-sm leading-relaxed text-muted">

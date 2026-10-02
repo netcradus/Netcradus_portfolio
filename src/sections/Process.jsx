@@ -73,12 +73,12 @@ export default function Process() {
             {/* base rail */}
             <span
               aria-hidden="true"
-              className="absolute left-2.5 top-2 h-[calc(100%-1rem)] w-px bg-ink/12 sm:left-6"
+              className="absolute left-4 top-2 h-[calc(100%-1rem)] w-px bg-ink/12 sm:left-8"
             />
             {/* animated fill */}
             <motion.span
               aria-hidden="true"
-              className="absolute left-2.5 top-2 w-px bg-brand-gradient sm:left-6"
+              className="absolute left-4 top-2 w-px bg-brand-gradient sm:left-8"
               style={reduced ? { height: '100%' } : { height: fillHeight }}
             />
 
@@ -87,10 +87,11 @@ export default function Process() {
                 <li key={step.id}>
                   <Reveal delay={0.05} y={26} amount={0.5}>
                     <div className="group relative">
-                      {/* node */}
+                      {/* node centered on rail */}
                       <span
                         aria-hidden="true"
-                        className="absolute -left-[2.1rem] top-1.5 flex h-5 w-5 items-center justify-center rounded-full border border-ink/15 bg-white transition-all duration-500 group-hover:border-transparent group-hover:bg-brand-gradient sm:-left-[4.05rem] sm:h-7 sm:w-7"
+                        className="absolute -left-8 sm:-left-16 top-1.5 flex h-5 w-5 sm:h-7 sm:w-7 items-center justify-center rounded-full border border-ink/15 bg-white transition-all duration-500 group-hover:border-transparent group-hover:bg-brand-gradient"
+                        style={{ transform: 'translateX(6px)' }}
                       >
                         <span className="h-1.5 w-1.5 rounded-full bg-ink/30 transition-all duration-500 group-hover:bg-white" />
                       </span>

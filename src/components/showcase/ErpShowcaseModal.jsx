@@ -333,10 +333,10 @@ export default function ErpShowcaseModal() {
             </div>
 
             {/* ---------------- Bottom Modal Footer ---------------- */}
-            <div className="relative z-20 flex flex-wrap items-center justify-between gap-4 border-t border-white/10 bg-slate-900/80 px-6 py-3 sm:px-8 backdrop-blur-md">
-              <div className="flex items-center gap-2 text-xs text-slate-300">
-                <ShieldCheck className="h-4 w-4 text-emerald-400" />
-                <span className="font-medium text-xs">Enterprise Hospital Management System · HIPAA & DPDP Compliant Architecture</span>
+            <div className="relative z-20 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2.5 sm:gap-4 border-t border-white/10 bg-slate-900/80 px-4 sm:px-8 py-3 backdrop-blur-md">
+              <div className="flex items-start gap-2 text-xs text-slate-300">
+                <ShieldCheck className="h-4 w-4 text-emerald-400 shrink-0 mt-0.5" />
+                <span className="font-medium text-xs leading-tight">Enterprise Hospital Management System · HIPAA &amp; DPDP Compliant Architecture</span>
               </div>
               <button
                 type="button"
@@ -344,7 +344,7 @@ export default function ErpShowcaseModal() {
                   setOpen(false);
                   document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
                 }}
-                className="rounded-full bg-brand-gradient px-5 py-2 text-xs font-bold text-white shadow-md shadow-[#ff5500]/25 hover:shadow-lg hover:shadow-[#ff7b00]/40 active:scale-95 transition-all cursor-pointer"
+                className="rounded-full bg-brand-gradient px-5 py-2 text-xs font-bold text-white shadow-md shadow-[#ff5500]/25 hover:shadow-lg hover:shadow-[#ff7b00]/40 active:scale-95 transition-all cursor-pointer w-full sm:w-auto text-center"
               >
                 Request ERP Deployment
               </button>

@@ -361,13 +361,13 @@ export default function ServiceDetailModal() {
               className="relative z-10 flex flex-col w-full max-w-5xl h-[90vh] max-h-[900px] overflow-hidden rounded-[2rem] border border-white/15 bg-navy-900 text-white shadow-[0_30px_90px_-20px_rgba(0,0,0,0.85)]"
             >
               {/* Top Navigation Bar */}
-              <div className="shrink-0 flex items-center justify-between border-b border-white/10 bg-navy-950/80 px-6 py-4 sm:px-8">
-                <div className="flex items-center gap-3">
-                  <span className="font-mono text-xs font-bold tracking-widest text-[#ff5500]">
+              <div className="shrink-0 flex items-center justify-between border-b border-white/10 bg-navy-950/80 px-4 sm:px-8 py-3.5 sm:py-4">
+                <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+                  <span className="font-mono text-xs font-bold tracking-widest text-[#ff5500] shrink-0">
                     SERVICE {currentService.index} / 04
                   </span>
-                  <span className="h-3 w-px bg-white/20" />
-                  <span className="text-xs uppercase tracking-wider text-white/60 font-semibold">
+                  <span className="hidden sm:block h-3 w-px bg-white/20" />
+                  <span className="hidden sm:block text-xs uppercase tracking-wider text-white/60 font-semibold truncate">
                     {currentService.category}
                   </span>
                 </div>

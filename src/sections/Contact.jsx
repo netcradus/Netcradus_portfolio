@@ -227,7 +227,7 @@ export default function Contact() {
                     {item.href ? (
                       <a
                         href={item.href}
-                        className="text-sm font-semibold text-ink hover:text-[#ff5500] transition-colors"
+                        className="text-sm font-semibold text-ink hover:text-[#ff5500] transition-colors break-all sm:break-normal"
                       >
                         {item.value}
                       </a>
@@ -487,7 +487,7 @@ export default function Contact() {
                       <button
                         type="submit"
                         disabled={isSubmitting}
-                        className="group inline-flex items-center justify-center gap-2.5 rounded-full bg-brand-gradient px-8 py-4 font-display text-base font-bold tracking-tight text-white shadow-[0_16px_38px_-18px_rgba(255,85,0,0.85)] transition-all duration-300 hover:shadow-[0_24px_48px_-18px_rgba(255,123,0,0.9)] disabled:cursor-not-allowed disabled:opacity-60"
+                        className="group inline-flex w-full sm:w-auto items-center justify-center gap-2.5 rounded-full bg-brand-gradient px-8 py-4 font-display text-base font-bold tracking-tight text-white shadow-[0_16px_38px_-18px_rgba(255,85,0,0.85)] transition-all duration-300 hover:shadow-[0_24px_48px_-18px_rgba(255,123,0,0.9)] disabled:cursor-not-allowed disabled:opacity-60"
                       >
                         {isSubmitting ? (
                           <>
