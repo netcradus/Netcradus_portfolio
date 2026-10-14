@@ -13,25 +13,32 @@
  * ---------------------------------------------------------------------------
  */
 
+const rawSiteUrl = (import.meta.env.VITE_SITE_URL || '').trim();
+const isLocalhost = rawSiteUrl.startsWith('http://localhost') || rawSiteUrl.startsWith('http://127.0.0.1');
+
 export const siteConfig = {
   name: 'CyberHaxs',
   tagline: 'Engineering digital experiences that move businesses forward.',
 
-  /** PLACEHOLDER — replace with your real deployed domain. */
-  siteUrl: 'https://cyberhaxs.com',
+  /**
+   * Base site URL configured via VITE_SITE_URL.
+   * In development: defaults to http://localhost:5173.
+   * In production: uses configured deployed URL; never leaks localhost into production.
+   */
+  siteUrl: import.meta.env.DEV
+    ? (rawSiteUrl || 'http://localhost:5173')
+    : (isLocalhost ? '' : rawSiteUrl),
 
   /**
    * Backend endpoint the contact form POSTs to.
-   * null  → no backend configured yet; the form will NOT fake a submission and
-   *         will surface an honest error state instead.
-   * e.g.  → '/api/contact' or 'https://formspree.io/f/xxxx'
+   * Configured via VITE_CONTACT_ENDPOINT when available; otherwise null to surface honest error state.
    */
-  contactEndpoint: null,
+  contactEndpoint: import.meta.env.VITE_CONTACT_ENDPOINT?.trim() || null,
 
   /**
-   * Business email for inquiries and fallbacks.
+   * Business email for inquiries and fallbacks configured via VITE_CONTACT_EMAIL.
    */
-  contactEmail: 'info@cyberhaxs.com',
+  contactEmail: import.meta.env.VITE_CONTACT_EMAIL?.trim() || 'info@cyberhaxs.com',
 
   /** PLACEHOLDER — replace with real profiles. null hides the link. */
   socials: [
